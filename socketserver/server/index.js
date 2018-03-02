@@ -46,6 +46,7 @@ io.on('connection', function (socket) {
     console.log('disconnect: ' + socket.id);
   });
   addReEmit(socket, 'pressed');
+  addReEmit(socket, 'moved');
 
   socket.on('imhub',
     function (data) {

@@ -10,8 +10,8 @@ app.get('/api/hello', (req, res) => {
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
-const socket = io.connect('http://localhost:8080');
-
+const socket = io.connect('http://159.65.49.85:8080/');
+//const socket = io.connect('http://localhost:8080/');
 
 var udpPort = new osc.UDPPort({
   localAddress: "0.0.0.0",
@@ -24,25 +24,30 @@ udpPort.open();
 
 console.info('socket.id: '+socket.id);
 
-socket.on('pressed',
-  function (data) {
-    console.log('pressed');
-    console.log(data);
-    udpPort.send({
-      address: "/pressed",
-      args: [
-        {
-          type: "s",
-          value: data.mouseX
-        },
-        {
-          type: "s",
-          value: data.mouseY
-        }
-      ]
-    }, "127.0.0.1", 1234);
+function redirectToOSC(eventType) {
+  socket.on(eventType,
+    function (data) {
+      console.log(eventType);
+      console.log(data);
+      udpPort.send({
+        address: '/' + eventType,
+        args: [
+          {
+            type: "s",
+            value: data.mouseX
+          },
+          {
+            type: "s",
+            value: data.mouseY
+          }
+        ]
+      }, "127.0.0.1", 1234);
 
-  }
-);
+    }
+  );
+}
+
+redirectToOSC('pressed');
+redirectToOSC('moved');
 
 socket.emit('imhub', {});
