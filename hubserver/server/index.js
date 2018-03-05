@@ -1,17 +1,17 @@
 const io = require('socket.io-client');
 const express = require('express');
 var osc = require("osc");
-const app = express();
+var app = require('express')();
+var http = require('http').Server(app);
+var serverio = require('socket.io')(http);
 const port = process.env.PORT || 5000;
 
 app.get('/api/hello', (req, res) => {
   res.send({ express: 'Hello From Express' });
 });
 
-app.listen(port, () => console.log(`Listening on port ${port}`));
-
-const socket = io.connect('http://159.65.49.85:8080/');
-//const socket = io.connect('http://localhost:8080/');
+// const socket = io.connect('http://159.65.49.85:8080/');
+const socket = io.connect('http://localhost:8080/');
 
 var udpPort = new osc.UDPPort({
   localAddress: "0.0.0.0",
@@ -21,6 +21,12 @@ var udpPort = new osc.UDPPort({
 // Open the socket.
 udpPort.open();
 
+
+serverio.on('connection', function (socket) {
+  console.log('connect: ' + socket.id);
+
+
+});
 
 console.info('socket.id: '+socket.id);
 
@@ -51,3 +57,7 @@ redirectToOSC('pressed');
 redirectToOSC('moved');
 
 socket.emit('imhub', {});
+
+http.listen(port, function () {
+  console.log('listening on : ' + port);
+});
