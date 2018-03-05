@@ -24,8 +24,6 @@ udpPort.open();
 
 serverio.on('connection', function (socket) {
   console.log('connect: ' + socket.id);
-
-
 });
 
 console.info('socket.id: '+socket.id);
