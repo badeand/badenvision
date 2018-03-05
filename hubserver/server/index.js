@@ -33,11 +33,11 @@ function redirectToOSC(eventType) {
         address: '/' + eventType,
         args: [
           {
-            type: "s",
+            type: "i",
             value: data.mouseX
           },
           {
-            type: "s",
+            type: "i",
             value: data.mouseY
           }
         ]

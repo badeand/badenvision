@@ -1,0 +1,112 @@
+[
+  {
+    "id": "red",
+    "presence": {
+      "color": {
+        "r": "255",
+        "g": "0",
+        "b": "0"
+      },
+      "note": "84"
+    }
+  },
+  {
+    "id": "green",
+    "presence": {
+      "color": {
+        "r": "0",
+        "g": "200",
+        "b": "0"
+      },
+      "note": "86"
+    }
+  },
+  {
+    "id": "blue",
+    "presence": {
+      "color": {
+        "r": "0",
+        "g": "0",
+        "b": "255"
+      },
+      "note": "88"
+    }
+  },
+  {
+    "id": "white",
+    "presence": {
+      "color": {
+        "r": "255",
+        "g": "255",
+        "b": "255"
+      },
+      "note": "89"
+    }
+  },
+  {
+    "id": "yellow",
+    "presence": {
+      "color": {
+        "r": "255",
+        "g": "255",
+        "b": "0"
+      },
+      "note": "91"
+    }
+  },
+  {
+    "id": "cyan",
+    "presence": {
+      "color": {
+        "r": "0",
+        "g": "255",
+        "b": "255"
+      },
+      "note": "93"
+    }
+  },
+  {
+    "id": "magenta",
+    "presence": {
+      "color": {
+        "r": "255",
+        "g": "0",
+        "b": "255"
+      }
+    },
+    "note": "95"
+  },
+  {
+    "id": "maroon",
+    "presence": {
+      "color": {
+        "r": "128",
+        "g": "0",
+        "b": "0"
+      }
+    },
+    "note": "96"
+  },
+  {
+    "id": "purple",
+    "presence": {
+      "color": {
+        "r": "128",
+        "g": "0",
+        "b": "128"
+      },
+      "note": "98"
+    }
+  },
+  {
+    "id": "black",
+    "presence": {
+      "color": {
+        "r": "0",
+        "g": "0",
+        "b": "0"
+      },
+      "note": "100"
+    }
+  }
+]
