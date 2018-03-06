@@ -14,8 +14,6 @@ import reducer from './reducers';
 const io = require('socket.io-client');
 const socket = io.connect('http://localhost:5000/');
 
-socket.emit('getallclients', {});
-
 const logger = createLogger({
   collapsed: true,
 });
@@ -36,9 +34,7 @@ function allClientsReceived(allClients) {
 }
 
 
-socket.on('allclients', function (data) {
-  console.log('--\'allclients\'')
-  console.log(data);
+socket.on('allObjects', function (data) {
   store.dispatch(allClientsReceived(data));
 });
 

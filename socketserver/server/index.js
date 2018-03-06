@@ -24,24 +24,33 @@ app.get('/sketch.js', function (req, res) {
   res.sendFile(__dirname + '/public/sketch.js');
 });
 
+function emitToHub(eventType, data) {
+  console.log('emitting to proxy:' + this.proxy)
+  if (hubsocketid) {
+    console.log('type: ' + eventType);
+    console.log(data);
+    io.sockets.connected[hubsocketid].emit(eventType, data);
+  } else {
+    console.warn('no hub. ignoring message to proxy');
+  }
+}
+
 function addReEmit(socket, eventType) {
   eventType = eventType;
   socket.on(eventType,
     function (data) {
-      console.log('emitting to proxy:' + this.proxy)
-      if (hubsocketid) {
-        console.log('type: ' + eventType);
-        console.log(data);
-        io.sockets.connected[hubsocketid].emit(eventType, data);
-      } else {
-        console.warn('no hub. ignoring message to proxy');
-      }
+      emitToHub.call(this, eventType, data);
     }
   );
 }
 
 io.on('connection', function (socket) {
   console.log('connect: ' + socket.id);
+  var data = {
+      deviceSocketId: socket.id,
+    }
+  ;
+  emitToHub('newClient',data)
   socket.on('disconnect', function () {
     console.log('disconnect: ' + socket.id);
   });

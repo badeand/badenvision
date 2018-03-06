@@ -11,16 +11,12 @@ class App extends Component {
   }
 
   onRefreshRequested() {
-    this.socket.emit('getallclients', {});
+    this.socket.emit('getAllObjects', {});
   }
 
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo"/>
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
         <AllClientsList socket={this.socket}/>
         <button onClick={this.onRefreshRequested}>Refresh</button>
       </div>

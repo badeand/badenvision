@@ -18,43 +18,43 @@ var udpPort = new osc.UDPPort({
   localPort: 1235,
   metadata: true
 });
-// Open the socket.
+
+
 udpPort.open();
 
 class ClientRegister {
   constructor() {
     var fs = require('fs');
     var data = fs.readFileSync('./playground/clientobjects.json', 'utf8');
-    this.availableObjects = JSON.parse(data);
+    this.allObjects = JSON.parse(data);
+    this.freeObjectNames = this.allObjects.map(object => (object.id));
     this.busyObjects = [];
   }
 
-  getAvailableObjects() {
-    return this.availableObjects;
+  getAllObjects() {
+    return this.allObjects;
   }
 
   getNextFreeObject() {
     var freeObject = this.allObjects[0];
     console.log(freeObject)
     return freeObject;
-
   }
-
 }
 
 clientRegister = new ClientRegister();
 
 serverio.on('connection', function (clientsocket) {
   console.log('connect: ' + clientsocket.id);
-
-  clientsocket.on('getallclients', function (data) {
-    console.log('getallclients: ' + data);
-    serverio.sockets.connected[clientsocket.id].emit('allclients', clientRegister.getAvailableObjects());
+  clientsocket.on('getAllObjects', function (data) {
+    serverio.sockets.connected[clientsocket.id].emit('allObjects', clientRegister.getAllObjects());
   });
-
-
 });
 
+socket.on('newClient', function (data) {
+  console.log('newClient');
+  console.log(data);
+});
 
 console.info('socket.id: ' + socket.id);
 
