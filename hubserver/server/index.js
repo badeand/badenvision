@@ -7,7 +7,7 @@ var serverio = require('socket.io')(http);
 const port = process.env.PORT || 5000;
 
 app.get('/api/hello', (req, res) => {
-  res.send({ express: 'Hello From Express' });
+  res.send({express: 'Hello From Express'});
 });
 
 // const socket = io.connect('http://159.65.49.85:8080/');
@@ -21,12 +21,42 @@ var udpPort = new osc.UDPPort({
 // Open the socket.
 udpPort.open();
 
+class ClientRegister {
+  constructor() {
+    var fs = require('fs');
+    var data = fs.readFileSync('./playground/clientobjects.json', 'utf8');
+    this.availableObjects = JSON.parse(data);
+    this.busyObjects = [];
+  }
 
-serverio.on('connection', function (socket) {
-  console.log('connect: ' + socket.id);
+  getAvailableObjects() {
+    return this.availableObjects;
+  }
+
+  getNextFreeObject() {
+    var freeObject = this.allObjects[0];
+    console.log(freeObject)
+    return freeObject;
+
+  }
+
+}
+
+clientRegister = new ClientRegister();
+
+serverio.on('connection', function (clientsocket) {
+  console.log('connect: ' + clientsocket.id);
+
+  clientsocket.on('getallclients', function (data) {
+    console.log('getallclients: ' + data);
+    serverio.sockets.connected[clientsocket.id].emit('allclients', clientRegister.getAvailableObjects());
+  });
+
+
 });
 
-console.info('socket.id: '+socket.id);
+
+console.info('socket.id: ' + socket.id);
 
 function redirectToOSC(eventType) {
   socket.on(eventType,
