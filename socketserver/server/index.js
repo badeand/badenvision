@@ -50,17 +50,23 @@ io.on('connection', function (socket) {
       deviceSocketId: socket.id,
     }
   ;
-  emitToHub('newClient',data)
+  if (socket.id !== hubsocketid) {
+    emitToHub('newClient', data)
+  }
   socket.on('disconnect', function () {
     console.log('disconnect: ' + socket.id);
+    if (socket.id === hubsocketid) {
+      console.error('Hub discronnected');
+      hubsocketid = null;
+    } else {
+
+    }
   });
   addReEmit(socket, 'pressed');
   addReEmit(socket, 'moved');
 
   socket.on('imhub',
     function (data) {
-      console.log('imhub');
-      console.log(data);
       setHub(socket.id);
     }
   );

@@ -20,7 +20,6 @@ var udpPort = new osc.UDPPort({
   metadata: true
 });
 
-
 udpPort.open();
 
 class ClientRegister {
