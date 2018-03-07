@@ -77,7 +77,7 @@ io.on('connection', function (socket) {
 });
 
 
-var port = 8080;
+var port = 80;
 http.listen(port, function () {
   console.log('listening on : ' + port);
 });
