@@ -18,8 +18,7 @@ class App extends Component {
     return (
       <div className="App">
         <table border="1">
-          <AllClientsList onRefreshRequested={this.onRefreshRequested()} socket={this.socket}/>
-
+          <AllClientsList onRefreshRequested={this.onRefreshRequested()}/>
         </table>
       </div>
     );

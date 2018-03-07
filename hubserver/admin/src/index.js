@@ -22,9 +22,7 @@ const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(reducer, applyMiddleware(sagaMiddleware, logger));
 
-
 const action = type => store.dispatch({ type });
-
 
 function allClientsReceived(allClients) {
   return {
@@ -32,7 +30,6 @@ function allClientsReceived(allClients) {
     allClients
   }
 }
-
 
 socket.on('allObjects', function (data) {
   store.dispatch(allClientsReceived(data));
