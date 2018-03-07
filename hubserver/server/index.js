@@ -35,9 +35,17 @@ class ClientRegister {
     return this.freeObjects;
   }
 
-  getNextFreeObject() {
+  getBusyObjects() {
+    return this.busyObjects;
+  }
+
+
+  getNextFreeObject(deviceSocketId) {
     var freeObject = this.freeObjects.pop();
-    this.busyObjects.push(freeObject);
+    this.busyObjects.push({
+      object: freeObject,
+      deviceSocketId: deviceSocketId,
+    });
     return freeObject;
   }
 }
@@ -52,6 +60,7 @@ function emitToAdmin(message, data) {
 
 function emitObjectStatusToAdmin() {
   emitToAdmin('freeObjects', clientRegister.getFreeObjects());
+  emitToAdmin('busyObjects', clientRegister.getBusyObjects());
 }
 
 serverio.on('connection', function (clientsocket) {
@@ -65,7 +74,7 @@ serverio.on('connection', function (clientsocket) {
 
 
 socket.on('newClient', function (data) {
-  console.log(clientRegister.getNextFreeObject());
+  console.log(clientRegister.getNextFreeObject(data.deviceSocketId));
   console.log(data);
   emitObjectStatusToAdmin();
 });

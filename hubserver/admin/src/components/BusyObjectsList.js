@@ -3,14 +3,14 @@ import {connect} from 'react-redux';
 import ObjectList from "./ObjectList";
 
 const mapStateToProps = state => ({
-  objects: state.clientregister.freeObjects.map( o => ( o.id )),
+  objects: state.clientregister.busyObjects.map( o => ( o.object.id + ' // ' + o.deviceSocketId )),
 });
 
 const mapDispatchToProps = {};
 
-const FreeObjectsList = connect(
+const BusyObjectsList = connect(
   mapStateToProps,
   mapDispatchToProps,
 )(ObjectList);
 
-export default FreeObjectsList;
+export default BusyObjectsList;

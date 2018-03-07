@@ -28,8 +28,21 @@ function freeObjectsReceived(freeObjects) {
   }
 }
 
+function busyObjectsReceived(busyObjects) {
+  return {
+    type: 'BUSY_OBJECTS_RECEIVED',
+    busyObjects
+  }
+}
+
+
 socket.on('freeObjects', function (data) {
   store.dispatch(freeObjectsReceived(data));
+});
+
+
+socket.on('busyObjects', function (data) {
+  store.dispatch(busyObjectsReceived(data));
 });
 
 

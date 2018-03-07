@@ -9,7 +9,6 @@ class ObjectList extends React.Component {
   render() {
     return (
       <div>
-        <tr>
           <td>
             <div>
               <b>{this.props.title}</b>
@@ -18,16 +17,13 @@ class ObjectList extends React.Component {
               {this.props.objects ? this.props.objects.length : '-'}
             </div>
           </td>
-        </tr>
-        <tr>
           <td>
-            {this.props.objects ? this.props.objects.map(client => (
+            {this.props.objects ? this.props.objects.map(o => (
               <div>
-                {client.id}
+                {o}
               </div>
             )) : '-'}
           </td>
-        </tr>
       </div>
     );
   }
