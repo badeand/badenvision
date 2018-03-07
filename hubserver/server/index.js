@@ -51,11 +51,11 @@ function emitToAdmin(message, data) {
 }
 
 function emitObjectStatusToAdmin() {
-  emitToAdmin('allObjects', clientRegister.getFreeObjects());
+  emitToAdmin('freeObjects', clientRegister.getFreeObjects());
 }
 
 serverio.on('connection', function (clientsocket) {
-  console.log('connect: ' + clientsocket.id);
+  console.log('admin connected: ' + clientsocket.id);
   adminSocket = clientsocket.id;
   emitObjectStatusToAdmin();
   clientsocket.on('getFreeObjects', function (data) {

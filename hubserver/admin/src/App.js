@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
-import AllClientsList from './components/AllClientsList';
+import FreeObjectsList from './components/FreeObjectsList';
 
 class App extends Component {
   constructor(props) {
@@ -18,7 +18,7 @@ class App extends Component {
     return (
       <div className="App">
         <table border="1">
-          <AllClientsList onRefreshRequested={this.onRefreshRequested()}/>
+          <FreeObjectsList title="Free objects" />
         </table>
       </div>
     );

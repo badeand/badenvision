@@ -8,9 +8,6 @@ import {applyMiddleware, createStore} from 'redux';
 import {createLogger} from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
 import reducer from './reducers';
-
-
-
 const io = require('socket.io-client');
 const socket = io.connect('http://localhost:5000/');
 
@@ -24,15 +21,15 @@ const store = createStore(reducer, applyMiddleware(sagaMiddleware, logger));
 
 const action = type => store.dispatch({ type });
 
-function allClientsReceived(allClients) {
+function freeObjectsReceived(freeObjects) {
   return {
-    type: 'ALL_CLIENTS_RECEIVED',
-    allClients
+    type: 'FREE_OBJECTS_RECEIVED',
+    freeObjects
   }
 }
 
-socket.on('allObjects', function (data) {
-  store.dispatch(allClientsReceived(data));
+socket.on('freeObjects', function (data) {
+  store.dispatch(freeObjectsReceived(data));
 });
 
 
