@@ -5,6 +5,7 @@ var app = require('express')();
 var http = require('http').Server(app);
 var serverio = require('socket.io')(http);
 const port = process.env.PORT || 5000;
+let adminSocket;
 
 app.get('/api/hello', (req, res) => {
   res.send({express: 'Hello From Express'});
@@ -27,33 +28,47 @@ class ClientRegister {
     var fs = require('fs');
     var data = fs.readFileSync('./playground/clientobjects.json', 'utf8');
     this.allObjects = JSON.parse(data);
-    this.freeObjectNames = this.allObjects.map(object => (object.id));
+    this.freeObjects = this.allObjects.slice(0);
     this.busyObjects = [];
   }
 
-  getAllObjects() {
-    return this.allObjects;
+  getFreeObjects() {
+    return this.freeObjects;
   }
 
   getNextFreeObject() {
-    var freeObject = this.allObjects[0];
-    console.log(freeObject)
+    var freeObject = this.freeObjects.pop();
+    this.busyObjects.push(freeObject);
     return freeObject;
   }
 }
 
 clientRegister = new ClientRegister();
 
+function emitToAdmin(message, data) {
+  if( adminSocket ) {
+    serverio.sockets.connected[adminSocket].emit(message, data);
+  }
+}
+
+function emitObjectStatusToAdmin() {
+  emitToAdmin('allObjects', clientRegister.getFreeObjects());
+}
+
 serverio.on('connection', function (clientsocket) {
   console.log('connect: ' + clientsocket.id);
-  clientsocket.on('getAllObjects', function (data) {
-    serverio.sockets.connected[clientsocket.id].emit('allObjects', clientRegister.getAllObjects());
+  adminSocket = clientsocket.id;
+  emitObjectStatusToAdmin();
+  clientsocket.on('getFreeObjects', function (data) {
+    emitObjectStatusToAdmin();
   });
 });
 
+
 socket.on('newClient', function (data) {
-  console.log('newClient');
+  console.log(clientRegister.getNextFreeObject());
   console.log(data);
+  emitObjectStatusToAdmin();
 });
 
 console.info('socket.id: ' + socket.id);
