@@ -25,10 +25,10 @@ app.get('/sketch.js', function (req, res) {
 });
 
 function emitToHub(eventType, data) {
-  console.log('emitting to proxy:' + this.proxy)
+  // console.log('emitting to proxy:' + this.proxy)
   if (hubsocketid) {
-    console.log('type: ' + eventType);
-    console.log(data);
+    // console.log('type: ' + eventType);
+    // console.log(data);
     io.sockets.connected[hubsocketid].emit(eventType, data);
   } else {
     console.warn('no hub. ignoring message to proxy');
@@ -50,6 +50,10 @@ io.on('connection', function (socket) {
       deviceSocketId: socket.id,
     }
   ;
+
+  socket.emit('deviceSocketId', data);
+
+
   if (socket.id !== hubsocketid) {
     emitToHub('newClient', data)
   }
@@ -59,7 +63,7 @@ io.on('connection', function (socket) {
       console.error('Hub discronnected');
       hubsocketid = null;
     } else {
-
+      emitToHub('removeClient', data)
     }
   });
   addReEmit(socket, 'pressed');
@@ -70,8 +74,6 @@ io.on('connection', function (socket) {
       setHub(socket.id);
     }
   );
-
-
 });
 
 

@@ -39,8 +39,7 @@ class ClientRegister {
     return this.busyObjects;
   }
 
-
-  getNextFreeObject(deviceSocketId) {
+  newClient(deviceSocketId) {
     var freeObject = this.freeObjects.pop();
     this.busyObjects.push({
       object: freeObject,
@@ -48,6 +47,17 @@ class ClientRegister {
     });
     return freeObject;
   }
+
+  removeClient(deviceSocketId) {
+    var toBeRemoved = this.busyObjects.filter(o => o.deviceSocketId == deviceSocketId)[0];
+    if( !toBeRemoved ) {
+      console.error('Cannot remove client. Unknown socket id : ' + deviceSocketId);
+      return;
+    }
+    this.freeObjects.push(toBeRemoved.object);
+    this.busyObjects.pop(toBeRemoved.object);
+  }
+
 }
 
 clientRegister = new ClientRegister();
@@ -74,18 +84,26 @@ serverio.on('connection', function (clientsocket) {
 
 
 socket.on('newClient', function (data) {
-  console.log(clientRegister.getNextFreeObject(data.deviceSocketId));
+  console.log(clientRegister.newClient(data.deviceSocketId));
   console.log(data);
   emitObjectStatusToAdmin();
 });
+
+socket.on('removeClient', function (data) {
+  console.log('removeClient');
+  clientRegister.removeClient(data.deviceSocketId)
+  console.log(data);
+  emitObjectStatusToAdmin();
+});
+
 
 console.info('socket.id: ' + socket.id);
 
 function redirectToOSC(eventType) {
   socket.on(eventType,
     function (data) {
-      console.log(eventType);
-      console.log(data);
+      // console.log(eventType);
+      // console.log(data);
       udpPort.send({
         address: '/' + eventType,
         args: [
