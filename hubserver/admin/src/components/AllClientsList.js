@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 
 class InnerAllClientsList extends React.Component {
   constructor(props) {
@@ -9,12 +9,30 @@ class InnerAllClientsList extends React.Component {
   render() {
     return (
       <div>
-        <h2>{this.props.allClients.length} clients</h2>
-        <ul>
-          {this.props.allClients.map(client => (
-            <li>{client.id}</li>
-          ))}
-        </ul>
+        <tr>
+          <td>
+            <div>
+              <b>free objects</b>
+            </div>
+            <div>
+              ( {this.props.allClients.length} )
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            {this.props.allClients.map(client => (
+              <div>
+                {client.id}
+              </div>
+            ))}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button onClick={this.props.onRefreshRequested}>Refresh</button>
+          </td>
+        </tr>
 
       </div>
     );
@@ -26,8 +44,7 @@ const mapStateToProps = state => ({
   allClients: state.clientregister.allClients,
 });
 
-const mapDispatchToProps = {
-};
+const mapDispatchToProps = {};
 
 const AllClientsList = connect(
   mapStateToProps,

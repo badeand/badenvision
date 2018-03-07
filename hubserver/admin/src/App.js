@@ -6,7 +6,7 @@ import AllClientsList from './components/AllClientsList';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.socket= props.socket;
+    this.socket = props.socket;
     this.onRefreshRequested = this.onRefreshRequested.bind(this);
   }
 
@@ -17,8 +17,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <AllClientsList socket={this.socket}/>
-        <button onClick={this.onRefreshRequested}>Refresh</button>
+        <table border="1">
+          <AllClientsList onRefreshRequested={this.onRefreshRequested()} socket={this.socket}/>
+
+        </table>
       </div>
     );
   }
