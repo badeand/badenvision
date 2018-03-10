@@ -24,6 +24,12 @@ app.get('/sketch.js', function (req, res) {
   res.sendFile(__dirname + '/public/sketch.js');
 });
 
+
+app.get('/images/texture_metal.jpg', function (req, res) {
+  res.sendFile(__dirname + '/public/images/texture_metal.jpg');
+});
+
+
 function emitToHub(eventType, data) {
   // console.log('emitting to proxy:' + this.proxy)
   if (hubsocketid) {
@@ -69,6 +75,13 @@ io.on('connection', function (socket) {
   addReEmit(socket, 'pressed');
   addReEmit(socket, 'moved');
 
+  socket.on('setObject', function(data){
+    console.log('setObject');
+    eventType = 'setObject';
+    console.log(data);
+    io.sockets.connected[data.deviceSocketId].emit(eventType, data.object);
+  });
+
   socket.on('imhub',
     function (data) {
       setHub(socket.id);
@@ -77,7 +90,7 @@ io.on('connection', function (socket) {
 });
 
 
-var port = 80;
+var port = 8080;
 http.listen(port, function () {
   console.log('listening on : ' + port);
 });

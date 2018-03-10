@@ -11,8 +11,8 @@ app.get('/api/hello', (req, res) => {
   res.send({express: 'Hello From Express'});
 });
 
-// const socket = io.connect('http://159.65.49.85:8080/');
-const socket = io.connect('http://localhost:8080/');
+//const socket = io.connect('http://159.65.49.85:80/');
+ const socket = io.connect('http://localhost:8080/');
 
 var udpPort = new osc.UDPPort({
   localAddress: "0.0.0.0",
@@ -84,7 +84,14 @@ serverio.on('connection', function (clientsocket) {
 
 
 socket.on('newClient', function (data) {
-  console.log(clientRegister.newClient(data.deviceSocketId));
+  console.log('--newClient');
+  let newObject = clientRegister.newClient(data.deviceSocketId);
+
+  console.log(newObject);
+  socket.emit('setObject', {
+    deviceSocketId:data.deviceSocketId,
+    object: newObject,
+  });
   console.log(data);
   emitObjectStatusToAdmin();
 });
