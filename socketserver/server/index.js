@@ -24,7 +24,6 @@ app.get('/sketch.js', function (req, res) {
   res.sendFile(__dirname + '/public/sketch.js');
 });
 
-
 app.get('/images/texture_metal.jpg', function (req, res) {
   res.sendFile(__dirname + '/public/images/texture_metal.jpg');
 });
