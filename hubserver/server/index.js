@@ -106,7 +106,9 @@ socket.on('removeClient', function (data) {
 
 console.info('socket.id: ' + socket.id);
 
-function redirectToOSC(eventType) {
+function redirectXYEventToOSC(eventType) {
+
+
   socket.on(eventType,
     function (data) {
       // console.log(eventType);
@@ -129,8 +131,41 @@ function redirectToOSC(eventType) {
   );
 }
 
-redirectToOSC('pressed');
-redirectToOSC('moved');
+
+
+function redirectRotationEventToOSC(eventType) {
+  socket.on(eventType,
+    function (data) {
+      udpPort.send({
+        address: '/' + eventType,
+        args: [
+          {
+            type: "s",
+            value: data.clientObjectId
+          },
+          {
+            type: "f",
+            value: data.rotationX
+          },
+          {
+            type: "f",
+            value: data.rotationY
+          },
+          {
+            type: "f",
+            value: data.pAccelerationZ
+          }
+        ]
+      }, "127.0.0.1", 1234);
+
+    }
+  );
+}
+
+
+redirectXYEventToOSC('pressed');
+redirectXYEventToOSC('moved');
+redirectRotationEventToOSC('rotation');
 
 socket.emit('imhub', {});
 

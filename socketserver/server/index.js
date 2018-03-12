@@ -50,6 +50,8 @@ function addReEmit(socket, eventType) {
   );
 }
 
+
+
 io.on('connection', function (socket) {
   console.log('connect: ' + socket.id);
   var data = {
@@ -74,6 +76,7 @@ io.on('connection', function (socket) {
   });
   addReEmit(socket, 'pressed');
   addReEmit(socket, 'moved');
+  addReEmit(socket, 'rotation');
 
   socket.on('setObject', function(data){
     console.log('setObject');
@@ -81,6 +84,7 @@ io.on('connection', function (socket) {
     console.log(data);
     io.sockets.connected[data.deviceSocketId].emit(eventType, data.object);
   });
+
 
   socket.on('imhub',
     function (data) {

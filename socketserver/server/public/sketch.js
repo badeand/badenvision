@@ -118,9 +118,9 @@ function moved() {
 
 
 function deviceMoved() {
-
-  if (gotcolor) {
+  if (this.clientObject) {
     var data = {
+        clientObjectId: this.clientObject.id,
         rotationY: rotationY,
         rotationX: rotationX,
         pAccelerationZ: pAccelerationZ,
