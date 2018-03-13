@@ -137,11 +137,15 @@ function redirectRotationEventToOSC(eventType) {
   socket.on(eventType,
     function (data) {
       udpPort.send({
-        address: '/' + eventType,
+        address: '/obj',
         args: [
           {
             type: "s",
             value: data.clientObjectId
+          },
+          {
+            type: "s",
+            value: eventType
           },
           {
             type: "f",
