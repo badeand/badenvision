@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
-import FreeObjectsList from './components/FreeObjectsList';
-import BusyObjectsList from './components/BusyObjectsList';
+import AllObjectsList from './components/AllObjectsList';
 
 class App extends Component {
   constructor(props) {
@@ -20,10 +19,7 @@ class App extends Component {
       <div className="App">
         <table border="1">
           <tr>
-          <FreeObjectsList title="Free objects" />
-          </tr>
-          <tr>
-          <BusyObjectsList title="Busy objects" />
+          <AllObjectsList title="All objects" />
           </tr>
         </table>
       </div>

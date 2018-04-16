@@ -21,29 +21,21 @@ const store = createStore(reducer, applyMiddleware(sagaMiddleware, logger));
 
 const action = type => store.dispatch({ type });
 
-function freeObjectsReceived(freeObjects) {
+function allObjectsReceived(allObjects) {
   return {
-    type: 'FREE_OBJECTS_RECEIVED',
-    freeObjects
-  }
-}
-
-function busyObjectsReceived(busyObjects) {
-  return {
-    type: 'BUSY_OBJECTS_RECEIVED',
-    busyObjects
+    type: 'ALL_OBJECTS_RECEIVED',
+    allObjects
   }
 }
 
 
-socket.on('freeObjects', function (data) {
-  store.dispatch(freeObjectsReceived(data));
+
+socket.on('allObjects', function (data) {
+  console.log( data );
+  store.dispatch(allObjectsReceived(data));
 });
 
 
-socket.on('busyObjects', function (data) {
-  store.dispatch(busyObjectsReceived(data));
-});
 
 
 ReactDOM.render(

@@ -1,12 +1,9 @@
 const clientregister = (state = {
-  freeObjects: [],
-  busyObjects: [],
+  allObjects: [],
 }, action) => {
   switch (action.type) {
-    case 'FREE_OBJECTS_RECEIVED':
-      return {...state, freeObjects: action.freeObjects};
-    case 'BUSY_OBJECTS_RECEIVED':
-      return {...state, busyObjects: action.busyObjects};
+    case 'ALL_OBJECTS_RECEIVED':
+      return {...state, allObjects: action.allObjects};
     default:
       return state;
   }

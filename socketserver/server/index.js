@@ -50,8 +50,18 @@ function addReEmit(socket, eventType) {
 }
 
 
+function listClients() {
+  var _clients ;
+  io.of('/').clients(function(error, clients) {
+    if (error) throw error;
+    _clients = clients;
+    console.log(clients); // => [PZDoMHjiu8PYfRiKAAAF, Anw2LatarvGVVXEIAAAD]
+  });
+  return _clients;
+}
 
 io.on('connection', function (socket) {
+  listClients();
   console.log('connect: ' + socket.id);
   var data = {
       deviceSocketId: socket.id,
@@ -65,23 +75,25 @@ io.on('connection', function (socket) {
     emitToHub('newClient', data)
   }
   socket.on('disconnect', function () {
+    listClients();
     console.log('disconnect: ' + socket.id);
     if (socket.id === hubsocketid) {
       console.error('Hub discronnected');
       hubsocketid = null;
     } else {
-      emitToHub('removeClient', data)
+      emitToHub('removeClient', socket.id);
     }
   });
   addReEmit(socket, 'pressed');
-  addReEmit(socket, 'moved');
+  // addReEmit(socket, 'moved');
   addReEmit(socket, 'rotation');
 
-  socket.on('setObject', function(data){
+  socket.on('setObject', function (data) {
     console.log('setObject');
     eventType = 'setObject';
     console.log(data);
     io.sockets.connected[data.deviceSocketId].emit(eventType, data.object);
+
   });
 
 

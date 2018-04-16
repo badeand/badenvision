@@ -9,21 +9,23 @@ class ObjectList extends React.Component {
   render() {
     return (
       <div>
-          <td>
-            <div>
-              <b>{this.props.title}</b>
-            </div>
-            <div>
-              {this.props.objects ? this.props.objects.length : '-'}
-            </div>
-          </td>
-          <td>
-            {this.props.objects ? this.props.objects.map(o => (
-              <div>
-                {o}
-              </div>
-            )) : '-'}
-          </td>
+        <b>{this.props.title} ({this.props.objects ? this.props.objects.length : '-'})</b>
+        <table>
+          {this.props.objects ? this.props.objects.map(o => (
+            <tr>
+              <td>
+                {o.object.id}
+              </td>
+              <td>
+                {o.busy ? "*busy*" : "_free_"}
+              </td>
+              <td>
+                {o.socketId}
+              </td>
+            </tr>
+
+          )) : '-'}
+        </table>
       </div>
     );
   }
