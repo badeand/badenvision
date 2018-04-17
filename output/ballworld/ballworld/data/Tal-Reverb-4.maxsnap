@@ -1,0 +1,21 @@
+{
+	"filetype" : "C74Snapshot",
+	"version" : 2,
+	"minorversion" : 0,
+	"name" : "Tal-Reverb-4",
+	"origin" : "TAL-Reverb-4.vst",
+	"type" : "VST",
+	"subtype" : "AudioEffect",
+	"embed" : 0,
+	"snapshot" : 	{
+		"pluginname" : "TAL-Reverb-4.vst",
+		"plugindisplayname" : "Tal-Reverb-4",
+		"pluginsavedname" : "/Library/Audio/Plug-Ins/VST/TAL-Reverb-4.vst",
+		"pluginsaveduniqueid" : 0,
+		"version" : 1,
+		"isbank" : 0,
+		"isbase64" : 1,
+		"blob" : "410.CMlaKA....fQPMDZ....AHWYVQC.AHP.....APVYlEVcrQG..............................DfWVMjLgTU....OzEFafLVcxAmbuclbg0VOh.iHfXWYxMWZu4VOhDiH9vCbx81YxEVay4COvI2amIWXsABbx81YxEVatEVak0iHSQWXxQWcvIBHiEFckc1axkWOhLVXzU1YuIWdfDiHfTlYlU1XzIWY1Ulbh8la8HRLh.RYlYVYiQmbkYWYxIVXs8VctQWOh.iKxjSL1PCL1.SN0.iL2jiLyTCNzHBHkYlYkMFcxUlckImXyk1YtEFag01a04Fc8HRLh.RYlYVYiQmbkYWYxIFYkwVX40iHv3BL2bSNzjiLvLSM0.CNwTSM3HiL2TiHfTlYlU1XzIWY1UlbhMWZ5UVOhDiHfTlYlU1XzIWY1Ulbhw1a20iHv3BNv.CLv.CLwDSNx.SNxfSN0TCL3HBHkYlYkMFcxUlckImXnk1Yn0iHvHxK9vyKvI2amIWXsMmO7zVZjkVagA2K9vyKzEFa9.."
+	}
+
+}
