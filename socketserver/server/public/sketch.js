@@ -14,6 +14,8 @@ b = 127;
 
 var movement;
 
+orientation = 0;
+
 function setClientObject(co) {
   this.clientObject = co;
 }
@@ -41,6 +43,14 @@ function setup() {
     deviceSocketId = data.deviceSocketId;
   });
   metalTexture = loadImage('./images/texture_metal.jpg');
+
+  window.addEventListener("orientationchange", function () {
+    orientation = window.orientation;
+  });
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
 }
 
 function draw() {
@@ -95,9 +105,17 @@ function draw() {
   background(16);
 
   if (movement) {
-    translate(rotationY * 7., rotationX* 7., pAccelerationZ* 7.);
-    // pAccelerationZ: pAccelerationZ,
+    if (orientation === 0) {
+      translate(rotationY * 7., rotationX * 7., pAccelerationZ * 7.);
+    }
+    if (orientation === -90) {
+      translate(rotationX * -7., rotationY * 7., pAccelerationZ * 7.);
+    }
+    if (orientation === 90) {
+      translate(rotationX * 7., rotationY * -7., pAccelerationZ * 7.);
+    }
   }
+
 
   sphereSize = windowHeight < windowWidth ? windowHeight / 3 : windowWidth / 3;
   texture(metalTexture)
