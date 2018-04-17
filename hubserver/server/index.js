@@ -163,6 +163,24 @@ socket.on('newClient', function (data) {
       },
       {
         type: "s",
+        value: 'note',
+      },
+      {
+        type: "i",
+        value: newClient.object.presence.note,
+      }
+    ]
+  }, "127.0.0.1", 1234);
+
+  udpPort.send({
+    address: '/obj',
+    args: [
+      {
+        type: "s",
+        value: newClient.object.id,
+      },
+      {
+        type: "s",
         value: 'add',
       },
     ]
