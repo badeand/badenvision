@@ -1,0 +1,53 @@
+{
+	"pattrstorage" : 	{
+		"name" : "prsts",
+		"slots" : 		{
+			"1" : 			{
+				"id" : 1,
+				"data" : 				{
+					"world::worldbox_scale_w" : [ 5.0 ],
+					"world::worldbox_scale_h" : [ 5.0 ],
+					"world::worldbox_scale_d" : [ 5.0 ],
+					"simplebody::position_x" : [ -1.617646 ],
+					"simplebody::position_y" : [ -4.000001 ],
+					"simplebody::position_z" : [ -1.993511 ],
+					"simplebody::scale_x" : [ 1.0 ],
+					"simplebody::scale_y" : [ 1.0 ],
+					"simplebody::scale_z" : [ 1.0 ],
+					"simplebody[1]::position_x" : [ 1.985492 ],
+					"simplebody[1]::position_y" : [ -4.000001 ],
+					"simplebody[1]::position_z" : [ 3.982538 ],
+					"simplebody[1]::scale_x" : [ 1.0 ],
+					"simplebody[1]::scale_y" : [ 1.0 ],
+					"simplebody[1]::scale_z" : [ 1.0 ]
+				}
+
+			}
+,
+			"2" : 			{
+				"id" : 2,
+				"data" : 				{
+					"world::worldbox_scale_w" : [ 5.0 ],
+					"world::worldbox_scale_h" : [ 5.0 ],
+					"world::worldbox_scale_d" : [ 5.0 ],
+					"simplebody::position_x" : [  ],
+					"simplebody::position_y" : [  ],
+					"simplebody::position_z" : [  ],
+					"simplebody::scale_x" : [  ],
+					"simplebody::scale_y" : [  ],
+					"simplebody::scale_z" : [  ],
+					"simplebody[1]::position_x" : [  ],
+					"simplebody[1]::position_y" : [  ],
+					"simplebody[1]::position_z" : [  ],
+					"simplebody[1]::scale_x" : [  ],
+					"simplebody[1]::scale_y" : [  ],
+					"simplebody[1]::scale_z" : [  ]
+				}
+
+			}
+
+		}
+
+	}
+
+}

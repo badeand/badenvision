@@ -1,0 +1,53 @@
+{
+	"pattrstorage" : 	{
+		"name" : "prsts",
+		"slots" : 		{
+			"1" : 			{
+				"id" : 1,
+				"data" : 				{
+					"world::worldbox_scale_w" : [ 5.0 ],
+					"world::worldbox_scale_h" : [ 5.0 ],
+					"world::worldbox_scale_d" : [ 5.0 ],
+					"simplebody1::position_x" : [ -2.755512 ],
+					"simplebody1::position_y" : [ -4.000001 ],
+					"simplebody1::position_z" : [ 0.07613 ],
+					"simplebody1::scale_x" : [ 1.0 ],
+					"simplebody1::scale_y" : [ 1.0 ],
+					"simplebody1::scale_z" : [ 1.0 ],
+					"simplebody2::position_x" : [ 3.259574 ],
+					"simplebody2::position_y" : [ -4.000001 ],
+					"simplebody2::position_z" : [ -3.076461 ],
+					"simplebody2::scale_x" : [ 1.0 ],
+					"simplebody2::scale_y" : [ 1.0 ],
+					"simplebody2::scale_z" : [ 1.0 ]
+				}
+
+			}
+,
+			"2" : 			{
+				"id" : 2,
+				"data" : 				{
+					"world::worldbox_scale_w" : [ 5.0 ],
+					"world::worldbox_scale_h" : [ 5.0 ],
+					"world::worldbox_scale_d" : [ 5.0 ],
+					"simplebody1::position_x" : [ 0.0565 ],
+					"simplebody1::position_y" : [ -2.110237 ],
+					"simplebody1::position_z" : [ -0.055154 ],
+					"simplebody1::scale_x" : [ 2.889764 ],
+					"simplebody1::scale_y" : [ 1.314961 ],
+					"simplebody1::scale_z" : [ 5.094488 ],
+					"simplebody2::position_x" : [ 3.198063 ],
+					"simplebody2::position_y" : [ -4.000001 ],
+					"simplebody2::position_z" : [ -2.861642 ],
+					"simplebody2::scale_x" : [ 1.0 ],
+					"simplebody2::scale_y" : [ 1.0 ],
+					"simplebody2::scale_z" : [ 1.0 ]
+				}
+
+			}
+
+		}
+
+	}
+
+}
