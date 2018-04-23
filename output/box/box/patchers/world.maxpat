@@ -194,7 +194,7 @@
 ,
 					"style" : "",
 					"text" : "autopattr",
-					"varname" : "u583006039"
+					"varname" : "u026012082"
 				}
 
 			}

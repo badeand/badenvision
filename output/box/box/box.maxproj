@@ -2,7 +2,7 @@
 	"name" : "box",
 	"version" : 1,
 	"creationdate" : 3607092304,
-	"modificationdate" : 3607346771,
+	"modificationdate" : 3607353323,
 	"viewrect" : [ 61.0, 412.0, 300.0, 500.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 0,
@@ -29,10 +29,11 @@
 				"kind" : "patcher",
 				"local" : 1
 			}
-
-		}
 ,
-		"data" : 		{
+			"model.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
 
 		}
 

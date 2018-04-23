@@ -51,7 +51,7 @@
 ,
 					"style" : "",
 					"text" : "autopattr",
-					"varname" : "u169009958"
+					"varname" : "u901005106"
 				}
 
 			}
@@ -170,7 +170,7 @@
 ,
 					"style" : "",
 					"text" : "autopattr",
-					"varname" : "u380009956"
+					"varname" : "u255005104"
 				}
 
 			}
@@ -245,7 +245,7 @@
 ,
 					"style" : "",
 					"text" : "autopattr",
-					"varname" : "u788009959"
+					"varname" : "u609005101"
 				}
 
 			}
@@ -420,7 +420,7 @@
 ,
 					"style" : "",
 					"text" : "autopattr",
-					"varname" : "u866009957"
+					"varname" : "u295005105"
 				}
 
 			}
@@ -433,12 +433,12 @@
 					"outlettype" : [ "", "", "", "" ],
 					"patching_rect" : [ 656.75, 26.0, 58.0, 22.0 ],
 					"restore" : 					{
-						"shape" : [ 1 ]
+						"shape" : [ 0 ]
 					}
 ,
 					"style" : "",
 					"text" : "autopattr",
-					"varname" : "u540009960"
+					"varname" : "u862005102"
 				}
 
 			}
@@ -458,7 +458,7 @@
 ,
 					"style" : "",
 					"text" : "autopattr",
-					"varname" : "u046009955"
+					"varname" : "u013005103"
 				}
 
 			}
