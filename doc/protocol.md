@@ -83,6 +83,20 @@ A new user is added to the system, and the users gets the object named "red":
 
 ``` /obj red note 84 ```
 
+### Rotation/ movement of the phone
+
+When a user moves the phone, the phone sends messages to socketserver. The socketserver relays this info to Hubserver which in turn translates this information to OSC.
+
+#### Format
+
+``` /obj <objectId> rotation x y z ```
+
+#### Example
+
+A user moves the phone.
+
+``` /obj red rotation 0.55432 0.234543 -0.64332 ```
+
 
 ### Removing a client
 
