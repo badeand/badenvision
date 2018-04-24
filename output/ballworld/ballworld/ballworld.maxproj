@@ -2,7 +2,7 @@
 	"name" : "ballworld",
 	"version" : 1,
 	"creationdate" : 3603818570,
-	"modificationdate" : 3603818778,
+	"modificationdate" : 3607440984,
 	"viewrect" : [ 25.0, 70.0, 300.0, 500.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 0,
@@ -16,22 +16,7 @@
 				"toplevel" : 1
 			}
 ,
-			"ball.maxpat" : 			{
-				"kind" : "patcher",
-				"local" : 1
-			}
-,
 			"doublesighter.maxpat" : 			{
-				"kind" : "patcher",
-				"local" : 1
-			}
-,
-			"visfx_doublesight.maxpat" : 			{
-				"kind" : "patcher",
-				"local" : 1
-			}
-,
-			"jumpycone.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
@@ -41,10 +26,34 @@
 				"local" : 1
 			}
 ,
+			"jumpycone.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"ball.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
 			"receiver.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
+,
+			"visfx_doublesight.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"testballs.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+
+		}
+,
+		"data" : 		{
 
 		}
 
