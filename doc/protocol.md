@@ -89,7 +89,7 @@ When a user moves the phone, the phone sends messages to socketserver. The socke
 
 #### Format
 
-``` /obj <objectId> rotation x y z ```
+``` /obj <objectId> rotation <x> <y> <z> ```
 
 #### Example
 
