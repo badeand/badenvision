@@ -20,6 +20,16 @@ app.get('/device', function (req, res) {
   sendDeviceHtml(res);
 });
 
+app.get('/stress', function (req, res) {
+  res.sendFile(__dirname + '/public/stress.html');
+});
+
+
+app.get('/stress.js', function (req, res) {
+  res.sendFile(__dirname + '/public/stress.js');
+});
+
+
 app.get('/sketch.js', function (req, res) {
   res.sendFile(__dirname + '/public/sketch.js');
 });
