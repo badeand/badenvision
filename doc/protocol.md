@@ -43,7 +43,7 @@ When a user gets added to the system (e.g. a user enters the URL in his/ her bro
 
 ### Adding a client
 
-Each active user gets a virtual object (e.g. specific a ball). There is a finite number of virtual objects registered in the system. Each available object has an ID. An object can only be used by one user at the time. In the exampels below each ball is given the name of its color (red, green, blue and so on), but any name/ id can be used.
+Each active user gets a virtual object (e.g. specific a ball). There is a finite number of virtual objects registered in the system. Each available object has an ID. An object can only be used by one user at the time. In the examples below each ball is given the name of its color (red, green, blue and so on), but any name/ id can be used.
 
 
 #### Format
