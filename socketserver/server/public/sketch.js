@@ -21,7 +21,6 @@ function setClientObject(co) {
 }
 
 function setup() {
-  createCanvas(windowWidth, windowHeight, WEBGL);
   socket = io.connect();
 
   movement = {
@@ -34,7 +33,7 @@ function setup() {
     setClientObject(co);
   });
 
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(windowWidth, windowHeight, WEBGL);
   strokeWeight(1)
   stroke(0);
 
@@ -47,10 +46,12 @@ function setup() {
   window.addEventListener("orientationchange", function () {
     orientation = window.orientation;
   });
+
+
 }
 
 function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
+  resizeCanvas(windowWidth, windowHeight+50);
 }
 
 function draw() {

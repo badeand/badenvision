@@ -36,7 +36,7 @@ function draw() {
 
   if (this.clientObject) {
     var data = {
-        clientObjectId: this.clientObject.id,
+        clientObjectId: this.clientObject.id,netw
         rotationY: ydir < 1 ? 1.5 : -1.5,
         rotationX: xdir < 1 ? 1.5 : -1.5,
         pAccelerationZ: zdir < 1 ? 3 : -3,

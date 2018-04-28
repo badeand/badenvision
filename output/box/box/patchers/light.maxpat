@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 338.0, 486.0, 824.0, 480.0 ],
+		"rect" : [ 301.0, 303.0, 824.0, 480.0 ],
 		"bglocked" : 1,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -81,7 +81,7 @@
 ,
 					"style" : "",
 					"text" : "autopattr",
-					"varname" : "u480002349"
+					"varname" : "u941013667"
 				}
 
 			}
@@ -243,14 +243,14 @@
 					"outlettype" : [ "", "", "", "" ],
 					"patching_rect" : [ 22.0, 221.5, 58.0, 22.0 ],
 					"restore" : 					{
-						"pos_x" : [ -3.409449 ],
-						"pos_y" : [ 0.0 ],
+						"pos_x" : [ -0.574803 ],
+						"pos_y" : [ 5.03937 ],
 						"pos_z" : [ 0.0 ]
 					}
 ,
 					"style" : "",
 					"text" : "autopattr",
-					"varname" : "u519002348"
+					"varname" : "u124013672"
 				}
 
 			}
@@ -399,12 +399,12 @@
 					"outlettype" : [ "", "", "", "" ],
 					"patching_rect" : [ 675.0, 59.0, 58.0, 22.0 ],
 					"restore" : 					{
-						"live.text[1]" : [ 0.0 ]
+						"live.text[1]" : [ 1.0 ]
 					}
 ,
 					"style" : "",
 					"text" : "autopattr",
-					"varname" : "u613002347"
+					"varname" : "u927013671"
 				}
 
 			}
@@ -477,7 +477,7 @@
 ,
 					"style" : "",
 					"text" : "autopattr",
-					"varname" : "u058002346"
+					"varname" : "u109013669"
 				}
 
 			}
@@ -562,12 +562,12 @@
 					"outlettype" : [ "", "", "", "" ],
 					"patching_rect" : [ 428.0, 59.0, 58.0, 22.0 ],
 					"restore" : 					{
-						"type" : [ 2 ]
+						"type" : [ 0 ]
 					}
 ,
 					"style" : "",
 					"text" : "autopattr",
-					"varname" : "u242002345"
+					"varname" : "u828013670"
 				}
 
 			}
@@ -641,7 +641,7 @@
 ,
 					"style" : "",
 					"text" : "autopattr",
-					"varname" : "u558002344"
+					"varname" : "u755013673"
 				}
 
 			}
@@ -717,7 +717,7 @@
 ,
 					"style" : "",
 					"text" : "autopattr",
-					"varname" : "u102002340"
+					"varname" : "u808013668"
 				}
 
 			}
@@ -793,7 +793,7 @@
 ,
 					"style" : "",
 					"text" : "autopattr",
-					"varname" : "u210002342"
+					"varname" : "u474013674"
 				}
 
 			}
