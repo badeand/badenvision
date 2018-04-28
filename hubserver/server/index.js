@@ -22,6 +22,9 @@ var udpPort = new osc.UDPPort({
 
 udpPort.open();
 
+const oscSendIP = "127.0.0.1";
+const oscSendPort = 1236;
+
 class ClientRegister {
   constructor() {
     var fs = require('fs');
@@ -30,7 +33,7 @@ class ClientRegister {
 
 
     let jsonData = JSON.parse(data);
-    for ( var i = 0 ; i < jsonData.length ; i ++ ) {
+    for (var i = 0; i < jsonData.length; i++) {
       this.allObjects.push({
         busy: false,
         object: jsonData[i],
@@ -38,12 +41,12 @@ class ClientRegister {
       });
     }
 
-    console.log( this.getAllObjects());
+    console.log(this.getAllObjects());
 
     /**
-    this.freeObjects = this.allObjects.slice(0);
-    this.busyObjects = [];
- **/
+     this.freeObjects = this.allObjects.slice(0);
+     this.busyObjects = [];
+     **/
   }
 
   getAllObjects() {
@@ -57,8 +60,8 @@ class ClientRegister {
   */
 
   newClient(deviceSocketId) {
-    for( var i = 0 ; i < this.getAllObjects().length ; i ++) {
-      if( this.getAllObjects()[i].busy === false) {
+    for (var i = 0; i < this.getAllObjects().length; i++) {
+      if (this.getAllObjects()[i].busy === false) {
         this.getAllObjects()[i].busy = true;
         this.getAllObjects()[i].deviceSocketId = deviceSocketId;
         return this.getAllObjects()[i];
@@ -67,33 +70,33 @@ class ClientRegister {
   }
 
   removeClient(deviceSocketId) {
-    for( var i = 0 ; i < this.getAllObjects().length ; i ++) {
-      if( this.getAllObjects()[i].deviceSocketId === deviceSocketId) {
+    for (var i = 0; i < this.getAllObjects().length; i++) {
+      if (this.getAllObjects()[i].deviceSocketId === deviceSocketId) {
         this.getAllObjects()[i].busy = false;
         this.getAllObjects()[i].deviceSocketId = "";
         return this.getAllObjects()[i];
       }
     }
 
-/**    var toBeRemoved = this.busyObjects.filter(o => o.deviceSocketId == deviceSocketId)[0];
-    if (!toBeRemoved) {
+    /**    var toBeRemoved = this.busyObjects.filter(o => o.deviceSocketId == deviceSocketId)[0];
+     if (!toBeRemoved) {
       console.error('Cannot remove client. Unknown socket id : ' + deviceSocketId);
       return;
     }
- **/
-/**
-    var objectsToRemove = [];
+     **/
+    /**
+     var objectsToRemove = [];
 
 
-    this.freeObjects.push(toBeRemoved.object);
-    this.busyObjects.pop(toBeRemoved.object);
-    objectsToRemove.pop(objectsToRemove);
+     this.freeObjects.push(toBeRemoved.object);
+     this.busyObjects.pop(toBeRemoved.object);
+     objectsToRemove.pop(objectsToRemove);
 
-    return toBeRemoved.object;
- **/
+     return toBeRemoved.object;
+     **/
   }
 
-  findBySocketId( socketId ) {
+  findBySocketId(socketId) {
     return this.busyObjects.filter(o => o.deviceSocketId == deviceSocketId)[0];
   }
 
@@ -199,9 +202,9 @@ socket.on('removeClient', function (data) {
 
   /**
 
-  tobeRemoved = clientRegister.removeClient(data.deviceSocketId)
+   tobeRemoved = clientRegister.removeClient(data.deviceSocketId)
    **/
-if(removedClient) {
+  if (removedClient) {
     udpPort.send({
       address: '/obj',
       args: [
@@ -215,7 +218,7 @@ if(removedClient) {
         },
       ]
     }, "127.0.0.1", 1234);
-}
+  }
 
 });
 
@@ -251,30 +254,14 @@ function redirectRotationEventToOSC(eventType) {
   socket.on(eventType,
     function (data) {
       udpPort.send({
-        address: '/obj',
+        address: '/' + data.clientObjectId + "/" + x,
         args: [
-          {
-            type: "s",
-            value: data.clientObjectId
-          },
-          {
-            type: "s",
-            value: eventType
-          },
           {
             type: "f",
             value: data.rotationX
           },
-          {
-            type: "f",
-            value: data.rotationY
-          },
-          {
-            type: "f",
-            value: data.pAccelerationZ
-          }
         ]
-      }, "127.0.0.1", 1234);
+      }, oscSendIP, oscSendPort);
 
     }
   );
@@ -283,8 +270,38 @@ function redirectRotationEventToOSC(eventType) {
 
 // redirectXYEventToOSC('pressed');
 // redirectXYEventToOSC('moved');
-redirectRotationEventToOSC('rotation');
+socket.on('rotation',
+    function (data) {
+      udpPort.send({
+        address: '/' + data.clientObjectId + "/x",
+        args: [
+          {
+            type: "f",
+            value: 1- (((data.rotationY / 90) + 1)/2),
+          },
+        ]
+      }, oscSendIP, oscSendPort);
+      udpPort.send({
+        address: '/' + data.clientObjectId + "/z",
+        args: [
+          {
+            type: "f",
+            value: 1- (((data.rotationX / 90) + 1)/2),
+          },
+        ]
+      }, oscSendIP, oscSendPort);
+      udpPort.send({
+        address: '/' + data.clientObjectId + "/y",
+        args: [
+          {
+            type: "f",
+            value: Math.max((data.pAccelerationZ*-1)-1,0.5),
+          },
+        ]
+      }, oscSendIP, oscSendPort);
+    }
 
+  );
 socket.emit('imhub', {});
 
 http.listen(port, function () {
