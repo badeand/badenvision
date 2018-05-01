@@ -8,8 +8,10 @@ RUN apt-get -y install curl sudo git nano
 RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash 
 RUN sudo apt-get install -y nodejs
 RUN git clone https://github.com/badeand/badenvision.git
-WORKDIR badenvision/socketserver/server/
+WORKDIR /badenvision/socketserver/server/
 RUN npm install
-WORKDIR badenvision/dockerdevserver
+WORKDIR /badenvision/hubserver/server/
+RUN npm install
+WORKDIR /badenvision/dockerdevserver
 RUN chmod +x dockerdevstart.sh
-ENTRYPOINT badenvision/dockerdevserver/dockerdevstart.sh
+ENTRYPOINT /badenvision/dockerdevserver/dockerdevstart.sh
