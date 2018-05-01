@@ -1,0 +1,44 @@
+## Docker
+
+
+
+In directory ```badenvision/socketserver/server```
+
+### How to build the image
+
+```
+docker build -t badenvision .
+```
+
+
+
+### How to run the image
+
+### Interactive run
+
+```
+docker run -it --rm -p 8080:8080 --name badenvision badenvision
+```
+
+### Start terminal
+
+```
+docker exec -it badenvision bash
+```
+
+
+
+
+---
+
+RUN apt-get update
+RUN apt-get -y install curl sudo git
+RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash 
+RUN sudo apt-get install -y nodejs
+RUN git clone https://github.com/badeand/badenvision.git
+WORKDIR badenvision/hubserver/server/
+RUN npm install
+WORKDIR badenvision/socketserver/server/
+RUN npm install
+RUN npm start
+
