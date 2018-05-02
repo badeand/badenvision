@@ -23,7 +23,7 @@ var udpPort = new osc.UDPPort({
 udpPort.open();
 
 const oscSendIP = "127.0.0.1";
-const oscSendPort = 1236;
+const oscSendPort = 1234;
 
 class ClientRegister {
   constructor() {
