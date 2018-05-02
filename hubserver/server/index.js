@@ -11,8 +11,8 @@ app.get('/api/hello', (req, res) => {
   res.send({express: 'Hello From Express'});
 });
 
-const socket = io.connect('http://159.65.49.85:80/');
-//const socket = io.connect('http://localhost:8080/');
+// const socket = io.connect('http://159.65.49.85:80/');
+const socket = io.connect('http://localhost:8080/');
 
 var udpPort = new osc.UDPPort({
   localAddress: "0.0.0.0",
