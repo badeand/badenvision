@@ -2,7 +2,7 @@
 	"name" : "box",
 	"version" : 1,
 	"creationdate" : 3607092304,
-	"modificationdate" : 3607954492,
+	"modificationdate" : 3608130816,
 	"viewrect" : [ 61.0, 412.0, 300.0, 500.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 0,
@@ -17,7 +17,8 @@
 ,
 			"main.maxpat" : 			{
 				"kind" : "patcher",
-				"local" : 1
+				"local" : 1,
+				"toplevel" : 1
 			}
 ,
 			"light.maxpat" : 			{
@@ -30,7 +31,7 @@
 				"local" : 1
 			}
 ,
-			"model.maxpat" : 			{
+			"objectmonitor.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
@@ -40,10 +41,14 @@
 				"local" : 1
 			}
 ,
-			"objectmonitor.maxpat" : 			{
+			"model.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
+
+		}
+,
+		"data" : 		{
 
 		}
 

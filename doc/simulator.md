@@ -1,5 +1,7 @@
 # Simulator
 
+/Versionhistory.md
+
 ## Tips
 * Keep console, simplebody windows closed and disable emitting OSC messages to improve graphics performance
 
@@ -15,3 +17,6 @@
 /osc_send.md
 
 /all_sim.md
+
+/sim_settings.md
+
