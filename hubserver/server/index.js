@@ -22,7 +22,7 @@ var udpPort = new osc.UDPPort({
 
 udpPort.open();
 
-const oscSendIP = "127.0.0.1";
+const oscSendIP = "192.168.10.169";
 const oscSendPort = 1234;
 
 class ClientRegister {
@@ -155,7 +155,7 @@ socket.on('newClient', function (data) {
         value: newClient.object.presence.color.b,
       },
     ]
-  }, "127.0.0.1", 1234);
+  }, oscSendIP, oscSendPort);
 
   udpPort.send({
     address: '/obj',
@@ -173,7 +173,7 @@ socket.on('newClient', function (data) {
         value: newClient.object.presence.note,
       }
     ]
-  }, "127.0.0.1", 1234);
+  }, oscSendIP, oscSendPort);
 
   udpPort.send({
     address: '/obj',
@@ -187,7 +187,7 @@ socket.on('newClient', function (data) {
         value: 'add',
       },
     ]
-  }, "127.0.0.1", 1234);
+  }, "127.0.0.1", oscSendPort);
 
 });
 
@@ -217,7 +217,7 @@ socket.on('removeClient', function (data) {
           value: 'remove',
         },
       ]
-    }, "127.0.0.1", 1234);
+    }, oscSendIP, oscSendPort);
   }
 
 });
@@ -242,7 +242,7 @@ function redirectXYEventToOSC(eventType) {
             value: data.mouseY
           }
         ]
-      }, "127.0.0.1", 1234);
+      }, oscSendIP, oscSendPort);
 
     }
   );

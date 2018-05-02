@@ -2,6 +2,7 @@
 FROM ubuntu:16.04
 # replace this with your application's default port
 EXPOSE 8080
+EXPOSE 1234
 
 RUN apt-get update
 RUN apt-get -y install curl sudo git nano

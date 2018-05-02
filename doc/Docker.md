@@ -63,7 +63,7 @@ docker build -t badenvision-dev .
 ##### Interactive run
 
 ```
-docker run -it --rm -p 8080:8080 --name badenvision-dev badenvision-dev
+docker run -it --rm -p 8080:8080 -p 1234:1234 --name badenvision-dev badenvision-dev
 ```
 
 ##### Start terminal
