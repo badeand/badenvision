@@ -22,8 +22,8 @@ var udpPort = new osc.UDPPort({
 
 udpPort.open();
 
-const oscSendIP = "192.168.10.169";
-const oscSendPort = 1234;
+const oscSendIP = process.env.HUBSERVER_OSC_OUT_IP || "127.0.0.1";
+const oscSendPort = process.env.HUBSERVER_OSC_OUT_PORT || 1234;
 
 class ClientRegister {
   constructor() {

@@ -51,6 +51,13 @@ Point you browser on ```http://localhost:8080``` to test the application.
 
 ### Building and publishing the image
 
+#### Environment variables in use
+
+| Name | Usage | Example value
+|:-----
+| HUBSERVER_OSC_OUT_IP | The IP adress/ host to send OSC data to. | 192.168.10.169
+| HUBSERVER_OSC_OUT_PORT | The port to send OSC data to. | 1234
+
 #### How to build the image
 
 ```
@@ -63,7 +70,7 @@ docker build -t badenvision-dev .
 ##### Interactive run
 
 ```
-docker run -it --rm -p 8080:8080 -p 1234:1234 --name badenvision-dev badenvision-dev
+docker run -it --rm -p 8080:8080 -p 1234:1234 -e HUBSERVER_OSC_OUT_IP=192.168.10.169 -e HUBSERVER_OSC_OUT_PORT=1234 --name badenvision-dev badenvision-dev
 ```
 
 ##### Start terminal
