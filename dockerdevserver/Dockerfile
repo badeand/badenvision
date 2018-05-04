@@ -15,4 +15,4 @@ WORKDIR /badenvision/hubserver/server/
 RUN npm install
 WORKDIR /badenvision/dockerdevserver
 RUN chmod +x dockerdevstart.sh
-# ENTRYPOINT /badenvision/dockerdevserver/dockerdevstart.sh
+ENTRYPOINT /badenvision/dockerdevserver/dockerdevstart.sh

@@ -11,12 +11,16 @@ app.get('/api/hello', (req, res) => {
   res.send({express: 'Hello From Express'});
 });
 
-// const socket = io.connect('http://159.65.49.85:80/');
-const socket = io.connect('http://localhost:8080/');
+
+socketServerClientIp = process.env.HUBSERVER_SOCKETSERVER_CLIENT_IP || "localhost";
+socketServerClientPort = process.env._HUBSERVER_SOCKETSERVER_CLIENT_PORT || "8080";
+socketServerClientURL = 'http://'+socketServerClientIp+':'+socketServerClientPort+'/';
+console.log( "Socket sever URL:"+socketServerClientURL)
+const socket = io.connect(socketServerClientURL);
 
 var udpPort = new osc.UDPPort({
   localAddress: "0.0.0.0",
-  localPort: 1235,
+  localPort: 9999,
   metadata: true
 });
 
@@ -24,6 +28,8 @@ udpPort.open();
 
 const oscSendIP = process.env.HUBSERVER_OSC_OUT_IP || "127.0.0.1";
 const oscSendPort = process.env.HUBSERVER_OSC_OUT_PORT || 1234;
+
+console.log("Sending OSC to host:" + oscSendIP + ", port: " + oscSendPort)
 
 class ClientRegister {
   constructor() {
