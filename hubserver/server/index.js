@@ -13,7 +13,6 @@ app.get('/api/hello', (req, res) => {
   res.send({express: 'Hello From Express'});
 });
 
-
 socketServerClientIp = process.env.HUBSERVER_SOCKETSERVER_CLIENT_IP || "localhost";
 socketServerClientPort = process.env._HUBSERVER_SOCKETSERVER_CLIENT_PORT || "8080";
 socketServerClientURL = 'http://'+socketServerClientIp+':'+socketServerClientPort;
@@ -21,10 +20,6 @@ console.log( "Socket sever URL:"+socketServerClientURL)
 
 const clientsSocket = io.connect(socketServerClientURL+clientNsName);
 clientsSocket.emit('join', { ns: clientNsName});
-
-
-
-// console.info(socket);
 
 
 var udpPort = new osc.UDPPort({
@@ -55,24 +50,11 @@ class ClientRegister {
         deviceSocketId: "",
       });
     }
-
-    // console.log(this.getAllObjects());
-
-    /**
-     this.freeObjects = this.allObjects.slice(0);
-     this.busyObjects = [];
-     **/
   }
 
   getAllObjects() {
     return this.allObjects;
   }
-
-  /*
-  getBusyObjects() {
-    return this.busyObjects;
-  }
-  */
 
   newClient(deviceSocketId) {
     for (var i = 0; i < this.getAllObjects().length; i++) {
@@ -92,23 +74,6 @@ class ClientRegister {
         return this.getAllObjects()[i];
       }
     }
-
-    /**    var toBeRemoved = this.busyObjects.filter(o => o.deviceSocketId == deviceSocketId)[0];
-     if (!toBeRemoved) {
-      console.error('Cannot remove client. Unknown socket id : ' + deviceSocketId);
-      return;
-    }
-     **/
-    /**
-     var objectsToRemove = [];
-
-
-     this.freeObjects.push(toBeRemoved.object);
-     this.busyObjects.pop(toBeRemoved.object);
-     objectsToRemove.pop(objectsToRemove);
-
-     return toBeRemoved.object;
-     **/
   }
 
   findBySocketId(socketId) {
@@ -125,7 +90,6 @@ function emitToAdmin(message, data) {
   }
 }
 
-
 serverio.on('connection', function (clientsocket) {
   console.log('admin connected: ' + clientsocket.id);
   adminSocket = clientsocket.id;
@@ -135,25 +99,14 @@ serverio.on('connection', function (clientsocket) {
   });
 });
 
-
-
-
 clientsSocket.on('requestObject', function (data) {
-
-
-
   let newClient = clientRegister.newClient(data.deviceSocketId);
-
-  console.log(newClient);
-  console.log('requestObject');
-  console.log(data);
 
   clientsSocket.emit("reemit", {
     deviceSocketId: data.deviceSocketId,
     message: "setObject",
     contents: newClient.object,
   } );
-
 
   udpPort.send({
     address: '/obj',
@@ -221,11 +174,6 @@ clientsSocket.on('removeClient', function (data) {
 
   let removedClient = clientRegister.removeClient(data);
   console.log("removedClient: " + removedClient);
-
-  /**
-
-   tobeRemoved = clientRegister.removeClient(data.deviceSocketId)
-   **/
   if (removedClient) {
     udpPort.send({
       address: '/obj',
@@ -244,13 +192,9 @@ clientsSocket.on('removeClient', function (data) {
 
 });
 
-
-
 function redirectXYEventToOSC(eventType) {
   clientsSocket.on(eventType,
     function (data) {
-      // console.log(eventType);
-      // console.log(data);
       udpPort.send({
         address: '/' + eventType,
         args: [
@@ -269,9 +213,6 @@ function redirectXYEventToOSC(eventType) {
   );
 }
 
-
-// redirectXYEventToOSC('pressed');
-// redirectXYEventToOSC('moved');
 clientsSocket.on('rotation',
     function (data) {
       udpPort.send({

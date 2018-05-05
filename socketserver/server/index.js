@@ -3,9 +3,6 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var hubsocketid;
 
-var clientsNs = io.of('/clients');
-
-
 function sendDeviceHtml(res) {
   res.sendFile(__dirname + '/public/device.html');
 }
@@ -36,6 +33,7 @@ app.get('/images/texture_metal.jpg', function (req, res) {
   res.sendFile(__dirname + '/public/images/texture_metal.jpg');
 });
 
+var clientsNs = io.of('/clients');
 
 function listClients() {
   var _clients ;
@@ -47,53 +45,32 @@ function listClients() {
   return _clients;
 }
 
-
-
-
-
 clientsNs.on('connection', function (socket) {
 
   listClients();
   console.log('connect: ' + socket.client.id);
   var data = {
-      deviceSocketId: socket.id,
-    }
-  ;
-
-  /*
-  socket.on('newObject', function (data) {
-    console.log('newObject');
-    eventType = 'newObject';
-    clientsNs.connected[data.deviceSocketId].emit('setObject', data.object);
-  });
-  */
-
+    deviceSocketId: socket.id,
+  };
 
   socket.on('rotation', function (data) {
     clientsNs.emit('rotation', data);
   });
 
-
   socket.on('reemit', function (data) {
-    console.log('reemit');
     eventType = 'reemit';
-    console.log(data);
     clientsNs.connected[data.deviceSocketId].emit(data.message, data.contents);
   });
 
-
   socket.on('requestObject', function (data) {
-    console.log('requestObject')
     clientsNs.emit('requestObject', { deviceSocketId: socket.id});
   });
-
 
   socket.on('disconnect', function () {
     listClients();
     console.log('disconnect: ' + socket.id);
     clientsNs.emit('removeClient', socket.id);
   });
-
 
   socket.on('join',
     function (data) {
@@ -103,7 +80,6 @@ clientsNs.on('connection', function (socket) {
   );
 
 });
-
 
 var port = 8080;
 http.listen(port, function () {
