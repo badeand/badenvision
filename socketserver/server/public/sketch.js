@@ -21,7 +21,12 @@ function setClientObject(co) {
 }
 
 function setup() {
-  socket = io.connect();
+
+  frameRate(35);
+
+  socket = io("/clients");
+  socket.emit('join', { ns: "/clients"});
+  socket.emit('requestObject', {});
 
   movement = {
     rotationY: rotationY,
@@ -30,6 +35,8 @@ function setup() {
   };
 
   socket.on('setObject', function (co) {
+    console.log('setObject');
+    console.log(co);
     setClientObject(co);
   });
 

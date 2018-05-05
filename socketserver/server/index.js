@@ -3,10 +3,8 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var hubsocketid;
 
-function setHub(socketid) {
-  hubsocketid = socketid;
-  console.log('Hub set: ' + hubsocketid);
-}
+var clientsNs = io.of('/clients');
+
 
 function sendDeviceHtml(res) {
   res.sendFile(__dirname + '/public/device.html');
@@ -39,27 +37,6 @@ app.get('/images/texture_metal.jpg', function (req, res) {
 });
 
 
-function emitToHub(eventType, data) {
-  // console.log('emitting to proxy:' + this.proxy)
-  if (hubsocketid) {
-    // console.log('type: ' + eventType);
-    // console.log(data);
-    io.sockets.connected[hubsocketid].emit(eventType, data);
-  } else {
-    console.warn('no hub. ignoring message to proxy');
-  }
-}
-
-function addReEmit(socket, eventType) {
-  eventType = eventType;
-  socket.on(eventType,
-    function (data) {
-      emitToHub.call(this, eventType, data);
-    }
-  );
-}
-
-
 function listClients() {
   var _clients ;
   io.of('/').clients(function(error, clients) {
@@ -70,48 +47,61 @@ function listClients() {
   return _clients;
 }
 
-io.on('connection', function (socket) {
+
+
+
+
+clientsNs.on('connection', function (socket) {
+
   listClients();
-  console.log('connect: ' + socket.id);
+  console.log('connect: ' + socket.client.id);
   var data = {
       deviceSocketId: socket.id,
     }
   ;
 
-  socket.emit('deviceSocketId', data);
+  /*
+  socket.on('newObject', function (data) {
+    console.log('newObject');
+    eventType = 'newObject';
+    clientsNs.connected[data.deviceSocketId].emit('setObject', data.object);
+  });
+  */
 
 
-  if (socket.id !== hubsocketid) {
-    emitToHub('newClient', data)
-  }
+  socket.on('rotation', function (data) {
+    clientsNs.emit('rotation', data);
+  });
+
+
+  socket.on('reemit', function (data) {
+    console.log('reemit');
+    eventType = 'reemit';
+    console.log(data);
+    clientsNs.connected[data.deviceSocketId].emit(data.message, data.contents);
+  });
+
+
+  socket.on('requestObject', function (data) {
+    console.log('requestObject')
+    clientsNs.emit('requestObject', { deviceSocketId: socket.id});
+  });
+
+
   socket.on('disconnect', function () {
     listClients();
     console.log('disconnect: ' + socket.id);
-    if (socket.id === hubsocketid) {
-      console.error('Hub discronnected');
-      hubsocketid = null;
-    } else {
-      emitToHub('removeClient', socket.id);
-    }
-  });
-  addReEmit(socket, 'pressed');
-  // addReEmit(socket, 'moved');
-  addReEmit(socket, 'rotation');
-
-  socket.on('setObject', function (data) {
-    console.log('setObject');
-    eventType = 'setObject';
-    console.log(data);
-    io.sockets.connected[data.deviceSocketId].emit(eventType, data.object);
-
+    clientsNs.emit('removeClient', socket.id);
   });
 
 
-  socket.on('imhub',
+  socket.on('join',
     function (data) {
-      setHub(socket.id);
+      console.log("socket "+ socket.id + " asked to join ns "+ data.ns)
+      socket.join(data.ns);
     }
   );
+
 });
 
 

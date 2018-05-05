@@ -7,6 +7,8 @@ var serverio = require('socket.io')(http);
 const port = process.env.PORT || 5000;
 let adminSocket;
 
+const clientNsName = "/clients"
+
 app.get('/api/hello', (req, res) => {
   res.send({express: 'Hello From Express'});
 });
@@ -14,9 +16,16 @@ app.get('/api/hello', (req, res) => {
 
 socketServerClientIp = process.env.HUBSERVER_SOCKETSERVER_CLIENT_IP || "localhost";
 socketServerClientPort = process.env._HUBSERVER_SOCKETSERVER_CLIENT_PORT || "8080";
-socketServerClientURL = 'http://'+socketServerClientIp+':'+socketServerClientPort+'/';
+socketServerClientURL = 'http://'+socketServerClientIp+':'+socketServerClientPort;
 console.log( "Socket sever URL:"+socketServerClientURL)
-const socket = io.connect(socketServerClientURL);
+
+const clientsSocket = io.connect(socketServerClientURL+clientNsName);
+clientsSocket.emit('join', { ns: clientNsName});
+
+
+
+// console.info(socket);
+
 
 var udpPort = new osc.UDPPort({
   localAddress: "0.0.0.0",
@@ -47,7 +56,7 @@ class ClientRegister {
       });
     }
 
-    console.log(this.getAllObjects());
+    // console.log(this.getAllObjects());
 
     /**
      this.freeObjects = this.allObjects.slice(0);
@@ -116,9 +125,6 @@ function emitToAdmin(message, data) {
   }
 }
 
-function emitObjectStatusToAdmin() {
-  emitToAdmin('allObjects', clientRegister.getAllObjects());
-}
 
 serverio.on('connection', function (clientsocket) {
   console.log('admin connected: ' + clientsocket.id);
@@ -130,13 +136,25 @@ serverio.on('connection', function (clientsocket) {
 });
 
 
-socket.on('newClient', function (data) {
+
+
+clientsSocket.on('requestObject', function (data) {
+
+
+
   let newClient = clientRegister.newClient(data.deviceSocketId);
-  emitObjectStatusToAdmin();
 
-
-  socket.emit('setObject', newClient);
+  console.log(newClient);
+  console.log('requestObject');
   console.log(data);
+
+  clientsSocket.emit("reemit", {
+    deviceSocketId: data.deviceSocketId,
+    message: "setObject",
+    contents: newClient.object,
+  } );
+
+
   udpPort.send({
     address: '/obj',
     args: [
@@ -197,14 +215,12 @@ socket.on('newClient', function (data) {
 
 });
 
-socket.on('removeClient', function (data) {
+clientsSocket.on('removeClient', function (data) {
 
   console.log('removeClient, data = ' + data);
 
   let removedClient = clientRegister.removeClient(data);
   console.log("removedClient: " + removedClient);
-  emitObjectStatusToAdmin();
-
 
   /**
 
@@ -229,10 +245,9 @@ socket.on('removeClient', function (data) {
 });
 
 
-console.info('socket.id: ' + socket.id);
 
 function redirectXYEventToOSC(eventType) {
-  socket.on(eventType,
+  clientsSocket.on(eventType,
     function (data) {
       // console.log(eventType);
       // console.log(data);
@@ -255,28 +270,9 @@ function redirectXYEventToOSC(eventType) {
 }
 
 
-function redirectRotationEventToOSC(eventType) {
-
-  socket.on(eventType,
-    function (data) {
-      udpPort.send({
-        address: '/' + data.clientObjectId + "/" + x,
-        args: [
-          {
-            type: "f",
-            value: data.rotationX
-          },
-        ]
-      }, oscSendIP, oscSendPort);
-
-    }
-  );
-}
-
-
 // redirectXYEventToOSC('pressed');
 // redirectXYEventToOSC('moved');
-socket.on('rotation',
+clientsSocket.on('rotation',
     function (data) {
       udpPort.send({
         address: '/' + data.clientObjectId + "/x",
@@ -308,7 +304,6 @@ socket.on('rotation',
     }
 
   );
-socket.emit('imhub', {});
 
 http.listen(port, function () {
   console.log('listening on : ' + port);
