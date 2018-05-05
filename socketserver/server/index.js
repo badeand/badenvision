@@ -58,7 +58,6 @@ clientsNs.on('connection', function (socket) {
   });
 
   socket.on('reemit', function (data) {
-    eventType = 'reemit';
     clientsNs.connected[data.deviceSocketId].emit(data.message, data.contents);
   });
 
