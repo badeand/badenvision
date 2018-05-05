@@ -33,10 +33,48 @@ app.get('/images/texture_metal.jpg', function (req, res) {
   res.sendFile(__dirname + '/public/images/texture_metal.jpg');
 });
 
+function findClientsSocket(roomId, namespace) {
+  var res = []
+    // the default namespace is "/"
+    , ns = io.of(namespace ||"/");
+
+  if (ns) {
+    for (var id in ns.connected) {
+      if(roomId) {
+        var index = ns.connected[id].rooms.indexOf(roomId);
+        if(index !== -1) {
+          res.push(ns.connected[id]);
+        }
+      } else {
+        res.push(ns.connected[id]);
+      }
+    }
+  }
+  return res;
+}
+
+app.get('/socketList', function (req, res) {
+  clients = [];
+  var foundSockets = findClientsSocket(null, '/clients');
+  foundSockets.forEach(function (element) {
+    var clientInfo = element.client.conn;
+    clients.push({
+      id: clientInfo.id,
+    })
+  });
+
+  res.end(JSON.stringify({
+    "sockets": clients,
+  }));
+});
+
+
 var clientsNs = io.of('/clients');
 
 
 clientsNs.on('connection', function (socket) {
+
+
 
   console.log('connect: ' + socket.client.id);
   var data = {
