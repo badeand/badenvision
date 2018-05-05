@@ -9,10 +9,10 @@ RUN apt-get -y install curl sudo git nano
 RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash 
 RUN sudo apt-get install -y nodejs
 
+RUN git clone https://github.com/badeand/badenvision.git
+
 RUN npm install -g --unsafe-perm node-red
 RUN chmod +x /badenvision/nodered/start.sh
-
-RUN git clone https://github.com/badeand/badenvision.git
 
 WORKDIR /badenvision/socketserver/server/
 RUN npm install
@@ -22,4 +22,4 @@ RUN npm install
 
 WORKDIR /badenvision/dockerdevserver
 RUN chmod +x /badenvision/dockerdevserver/dockerdevstart.sh
-# ENTRYPOINT /badenvision/dockerdevserver/dockerdevstart.sh
+ENTRYPOINT /badenvision/dockerdevserver/dockerdevstart.sh
