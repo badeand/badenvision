@@ -7,7 +7,7 @@
 Type the following on the command line:
 
 ```
-docker run -it --rm -p 8080:8080 -p 1234:1234 --name badenvision-dev badeand/badenvision-dev:201805022044
+docker run -it --rm -p 8080:8080 -p 1234:1234 -p 1880:1880 --name badenvision-dev badeand/badenvision-dev:201805022044
 ```
 
 You should see something like this:
@@ -73,7 +73,7 @@ docker build -t badenvision-dev .
 
 ```
 docker run -it --rm  \
-   -p 8080:8080 -p 1234:1234 \
+   -p 8080:8080 -p 1234:1234 -p 1880:1880 \
    -e HUBSERVER_OSC_OUT_IP=192.168.10.169 \
    -e HUBSERVER_OSC_OUT_PORT=1234 \
    --name badenvision-dev \
