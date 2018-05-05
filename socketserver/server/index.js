@@ -35,19 +35,9 @@ app.get('/images/texture_metal.jpg', function (req, res) {
 
 var clientsNs = io.of('/clients');
 
-function listClients() {
-  var _clients ;
-  io.of('/').clients(function(error, clients) {
-    if (error) throw error;
-    _clients = clients;
-    console.log(clients); // => [PZDoMHjiu8PYfRiKAAAF, Anw2LatarvGVVXEIAAAD]
-  });
-  return _clients;
-}
 
 clientsNs.on('connection', function (socket) {
 
-  listClients();
   console.log('connect: ' + socket.client.id);
   var data = {
     deviceSocketId: socket.id,
@@ -66,7 +56,6 @@ clientsNs.on('connection', function (socket) {
   });
 
   socket.on('disconnect', function () {
-    listClients();
     console.log('disconnect: ' + socket.id);
     clientsNs.emit('removeClient', socket.id);
   });
