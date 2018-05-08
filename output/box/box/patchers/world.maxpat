@@ -71,13 +71,13 @@
 					"patching_rect" : [ 723.0, 71.0, 58.0, 22.0 ],
 					"restore" : 					{
 						"camera_x" : [ -20.0 ],
-						"camera_y" : [ -20.0 ],
-						"camera_z" : [ -11.0 ]
+						"camera_y" : [ 13.385827 ],
+						"camera_z" : [ -15.0 ]
 					}
 ,
 					"style" : "",
 					"text" : "autopattr",
-					"varname" : "u427009960"
+					"varname" : "u208006112"
 				}
 
 			}
@@ -114,8 +114,8 @@
 							"parameter_longname" : "live.numbox[192]",
 							"parameter_shortname" : "live.numbox",
 							"parameter_type" : 0,
-							"parameter_mmin" : -20.0,
-							"parameter_mmax" : 20.0,
+							"parameter_mmin" : -90.0,
+							"parameter_mmax" : 90.0,
 							"parameter_unitstyle" : 1
 						}
 
@@ -141,8 +141,8 @@
 							"parameter_longname" : "live.numbox[193]",
 							"parameter_shortname" : "live.numbox",
 							"parameter_type" : 0,
-							"parameter_mmin" : -20.0,
-							"parameter_mmax" : 20.0,
+							"parameter_mmin" : -90.0,
+							"parameter_mmax" : 90.0,
 							"parameter_unitstyle" : 1
 						}
 
@@ -194,8 +194,8 @@
 							"parameter_longname" : "live.numbox[194]",
 							"parameter_shortname" : "live.numbox",
 							"parameter_type" : 0,
-							"parameter_mmin" : -20.0,
-							"parameter_mmax" : 20.0,
+							"parameter_mmin" : -90.0,
+							"parameter_mmax" : 90.0,
 							"parameter_unitstyle" : 1
 						}
 
@@ -356,14 +356,14 @@
 					"outlettype" : [ "", "", "", "" ],
 					"patching_rect" : [ 325.0, 66.0, 58.0, 22.0 ],
 					"restore" : 					{
-						"worldbox_x" : [ 7.204724 ],
-						"worldbox_y" : [ 5.314961 ],
-						"worldbox_z" : [ 1.220472 ]
+						"worldbox_x" : [ 8.0 ],
+						"worldbox_y" : [ 6.0 ],
+						"worldbox_z" : [ 0.2 ]
 					}
 ,
 					"style" : "",
 					"text" : "autopattr",
-					"varname" : "u235009962"
+					"varname" : "u980006111"
 				}
 
 			}
