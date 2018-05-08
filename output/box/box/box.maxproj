@@ -2,7 +2,7 @@
 	"name" : "box",
 	"version" : 1,
 	"creationdate" : 3607092304,
-	"modificationdate" : 3608130816,
+	"modificationdate" : 3608648299,
 	"viewrect" : [ 61.0, 412.0, 300.0, 500.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 0,
@@ -31,12 +31,12 @@
 				"local" : 1
 			}
 ,
-			"objectmonitor.maxpat" : 			{
+			"simsettings.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
-			"simsettings.maxpat" : 			{
+			"objectmonitor.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
