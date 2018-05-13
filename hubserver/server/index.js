@@ -153,12 +153,8 @@ clientsSocket.on('requestObject', function (data) {
   }, oscSendIP, oscSendPort);
 
   udpPort.send({
-    address: '/obj',
+    address: '/' + newClient.object.id + '/add',
     args: [
-      {
-        type: "s",
-        value: newClient.object.id,
-      },
       {
         type: "s",
         value: 'add',
@@ -176,12 +172,8 @@ clientsSocket.on('removeClient', function (data) {
   console.log("removedClient: " + removedClient);
   if (removedClient) {
     udpPort.send({
-      address: '/obj',
+      address: '/' + removedClient.object.id + '/remove',
       args: [
-        {
-          type: "s",
-          value: removedClient.object.id,
-        },
         {
           type: "s",
           value: 'remove',
@@ -225,20 +217,21 @@ clientsSocket.on('rotation',
         ]
       }, oscSendIP, oscSendPort);
       udpPort.send({
-        address: '/' + data.clientObjectId + "/z",
-        args: [
-          {
-            type: "f",
-            value: 1- (((data.rotationX / 90) + 1)/2),
-          },
-        ]
-      }, oscSendIP, oscSendPort);
-      udpPort.send({
         address: '/' + data.clientObjectId + "/y",
         args: [
           {
             type: "f",
-            value: Math.max((data.pAccelerationZ*-1)-1,0.5),
+            value: 1- (((data.rotationX / 20) + 1)/2),
+          },
+        ]
+      }, oscSendIP, oscSendPort);
+
+      udpPort.send({
+        address: '/' + data.clientObjectId + "/z",
+        args: [
+          {
+            type: "f",
+            value: Math.max(data.pAccelerationZ*-1,0.5),
           },
         ]
       }, oscSendIP, oscSendPort);
