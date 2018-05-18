@@ -212,26 +212,27 @@ clientsSocket.on('rotation',
         args: [
           {
             type: "f",
-            value: 1- (((data.rotationY / 90) + 1)/2),
+            value: 1- (((data.rotationY / 400) + 1)/2),
           },
         ]
       }, oscSendIP, oscSendPort);
+      /*
       udpPort.send({
         address: '/' + data.clientObjectId + "/y",
         args: [
           {
             type: "f",
-            value: 1- (((data.rotationX / 20) + 1)/2),
+            value: (((data.rotationX / 10) + 1)/2),
           },
         ]
       }, oscSendIP, oscSendPort);
-
+*/
       udpPort.send({
-        address: '/' + data.clientObjectId + "/z",
+        address: '/' + data.clientObjectId + "/y",
         args: [
           {
             type: "f",
-            value: Math.max(data.pAccelerationZ*-1,0.5),
+            value: Math.max((data.pAccelerationZ/300)*-10,0.5),
           },
         ]
       }, oscSendIP, oscSendPort);
