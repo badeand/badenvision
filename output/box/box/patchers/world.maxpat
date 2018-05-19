@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 34.0, 79.0, 1227.0, 905.0 ],
+		"rect" : [ 413.0, 443.0, 462.0, 479.0 ],
 		"bglocked" : 1,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -70,14 +70,14 @@
 					"outlettype" : [ "", "", "", "" ],
 					"patching_rect" : [ 723.0, 71.0, 58.0, 22.0 ],
 					"restore" : 					{
-						"camera_x" : [ -20.0 ],
-						"camera_y" : [ 13.385827 ],
+						"camera_x" : [ 0.0 ],
+						"camera_y" : [ 0.0 ],
 						"camera_z" : [ -15.0 ]
 					}
 ,
 					"style" : "",
 					"text" : "autopattr",
-					"varname" : "u208006112"
+					"varname" : "u225006157"
 				}
 
 			}
@@ -356,14 +356,14 @@
 					"outlettype" : [ "", "", "", "" ],
 					"patching_rect" : [ 325.0, 66.0, 58.0, 22.0 ],
 					"restore" : 					{
-						"worldbox_x" : [ 8.0 ],
-						"worldbox_y" : [ 6.0 ],
+						"worldbox_x" : [ 8.354331 ],
+						"worldbox_y" : [ 3.944882 ],
 						"worldbox_z" : [ 0.2 ]
 					}
 ,
 					"style" : "",
 					"text" : "autopattr",
-					"varname" : "u980006111"
+					"varname" : "u993005638"
 				}
 
 			}
@@ -680,9 +680,9 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "bang", "" ],
-					"patching_rect" : [ 25.0, 294.0, 204.0, 23.0 ],
+					"patching_rect" : [ 25.0, 294.0, 346.0, 23.0 ],
 					"style" : "",
-					"text" : "jit.gl.render box @camera 0 0 -15"
+					"text" : "jit.gl.render box @camera 0 0 -15 @erase_color 0. 0. 0. 1."
 				}
 
 			}
