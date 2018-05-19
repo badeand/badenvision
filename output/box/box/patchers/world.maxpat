@@ -77,7 +77,7 @@
 ,
 					"style" : "",
 					"text" : "autopattr",
-					"varname" : "u225006157"
+					"varname" : "u343012077"
 				}
 
 			}
@@ -363,7 +363,7 @@
 ,
 					"style" : "",
 					"text" : "autopattr",
-					"varname" : "u993005638"
+					"varname" : "u289004430"
 				}
 
 			}
