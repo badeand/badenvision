@@ -1,47 +1,24 @@
 [
-
   {
     "id": "red",
     "presence": {
       "color": {
-        "r": "255",
-        "g": "0",
-        "b": "0"
+        "r": "230",
+        "g": "25",
+        "b": "75"
       },
-      "note": "84"
+      "note": "64"
     }
   },
   {
     "id": "green",
     "presence": {
       "color": {
-        "r": "0",
-        "g": "200",
-        "b": "0"
+        "r": "60",
+        "g": "180",
+        "b": "75"
       },
-      "note": "86"
-    }
-  },
-  {
-    "id": "blue",
-    "presence": {
-      "color": {
-        "r": "0",
-        "g": "0",
-        "b": "255"
-      },
-      "note": "88"
-    }
-  },
-  {
-    "id": "white",
-    "presence": {
-      "color": {
-        "r": "255",
-        "g": "255",
-        "b": "255"
-      },
-      "note": "89"
+      "note": "65"
     }
   },
   {
@@ -49,43 +26,131 @@
     "presence": {
       "color": {
         "r": "255",
-        "g": "255",
-        "b": "0"
+        "g": "225",
+        "b": "25"
       },
-      "note": "91"
+      "note": "66"
+    }
+  },
+  {
+    "id": "blue",
+    "presence": {
+      "color": {
+        "r": "0",
+        "g": "130",
+        "b": "200"
+      },
+      "note": "67"
+    }
+  },
+  {
+    "id": "orange",
+    "presence": {
+      "color": {
+        "r": "245",
+        "g": "130",
+        "b": "48"
+      },
+      "note": "68"
+    }
+  },
+  {
+    "id": "purple",
+    "presence": {
+      "color": {
+        "r": "145",
+        "g": "30",
+        "b": "180"
+      },
+      "note": "69"
     }
   },
   {
     "id": "cyan",
     "presence": {
       "color": {
-        "r": "0",
-        "g": "255",
-        "b": "255"
+        "r": "70",
+        "g": "240",
+        "b": "240"
       },
-      "note": "93"
-    }
-  },
-  {
-    "id": "black",
-    "presence": {
-      "color": {
-        "r": "0",
-        "g": "0",
-        "b": "0"
-      },
-      "note": "100"
+      "note": "70"
     }
   },
   {
     "id": "magenta",
     "presence": {
       "color": {
-        "r": "255",
-        "g": "0",
+        "r": "240",
+        "g": "50",
+        "b": "230"
+      },
+      "note": "71"
+    }
+  },
+  {
+    "id": "lime",
+    "presence": {
+      "color": {
+        "r": "210",
+        "g": "245",
+        "b": "60"
+      },
+      "note": "72"
+    }
+  },
+  {
+    "id": "pink",
+    "presence": {
+      "color": {
+        "r": "250",
+        "g": "190",
+        "b": "190"
+      },
+      "note": "73"
+    }
+  },
+  {
+    "id": "teal",
+    "presence": {
+      "color": {
+        "r": "0",
+        "g": "128",
+        "b": "128"
+      },
+      "note": "74"
+    }
+  },
+  {
+    "id": "lavender",
+    "presence": {
+      "color": {
+        "r": "230",
+        "g": "190",
         "b": "255"
       },
-      "note": "95"
+      "note": "75"
+    }
+  },
+  {
+    "id": "brown",
+    "presence": {
+      "color": {
+        "r": "170",
+        "g": "110",
+        "b": "40"
+      },
+      "note": "76"
+    }
+  },
+  {
+    "id": "beige",
+    "presence": {
+      "color": {
+        "r": "255",
+        "g": "250",
+        "b": "200"
+      },
+      "note": "77"
     }
   },
   {
@@ -96,131 +161,73 @@
         "g": "0",
         "b": "0"
       },
-      "note": "96"
+      "note": "78"
     }
-
   },
   {
-    "id": "purple",
+    "id": "mint",
+    "presence": {
+      "color": {
+        "r": "170",
+        "g": "255",
+        "b": "195"
+      },
+      "note": "79"
+    }
+  },
+  {
+    "id": "olive",
     "presence": {
       "color": {
         "r": "128",
+        "g": "128",
+        "b": "0"
+      },
+      "note": "80"
+    }
+  },
+  {
+    "id": "coral",
+    "presence": {
+      "color": {
+        "r": "255",
+        "g": "215",
+        "b": "180"
+      },
+      "note": "81"
+    }
+  },
+  {
+    "id": "navy",
+    "presence": {
+      "color": {
+        "r": "0",
         "g": "0",
         "b": "128"
       },
-      "note": "98"
+      "note": "82"
+    }
+  },
+  {
+    "id": "grey",
+    "presence": {
+      "color": {
+        "r": "128",
+        "g": "128",
+        "b": "128"
+      },
+      "note": "83"
+    }
+  },
+  {
+    "id": "white",
+    "presence": {
+      "color": {
+        "r": "255",
+        "g": "255",
+        "b": "255"
+      },
+      "note": "84"
     }
   }
-
-, { "id": "test_000", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_001", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_002", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_003", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_004", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_005", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_006", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_007", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_008", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_009", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-
-, { "id": "test_010", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_011", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_012", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_013", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_014", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_015", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_016", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_017", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_018", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_019", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-
-, { "id": "test_020", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_021", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_022", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_023", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_024", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_025", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_026", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_027", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_028", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_029", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-
-, { "id": "test_030", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_031", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_032", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_033", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_034", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_035", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_036", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_037", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_038", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_039", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-
-, { "id": "test_040", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_041", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_042", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_043", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_044", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_045", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_046", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_047", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_048", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_049", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-
-, { "id": "test_050", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_051", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_052", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_053", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_054", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_055", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_056", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_057", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_058", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_059", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-
-, { "id": "test_060", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_061", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_062", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_063", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_064", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_065", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_066", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_067", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_068", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_069", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-
-, { "id": "test_070", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_071", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_072", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_073", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_074", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_075", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_076", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_077", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_078", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_079", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-
-, { "id": "test_080", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_081", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_082", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_083", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_084", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_085", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_086", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_087", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_088", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_089", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-
-, { "id": "test_090", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_091", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_092", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_093", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_094", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_095", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_096", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_097", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_098", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-, { "id": "test_099", "presence": { "color": { "r": "255", "g": "255", "b": "255" }, "note": "84" } }
-
-
 ]
