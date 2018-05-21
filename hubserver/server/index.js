@@ -109,16 +109,8 @@ clientsSocket.on('requestObject', function (data) {
   } );
 
   udpPort.send({
-    address: '/obj',
+    address: '/' + newClient.object.id + "/color",
     args: [
-      {
-        type: "s",
-        value: newClient.object.id,
-      },
-      {
-        type: "s",
-        value: 'color',
-      },
       {
         type: "i",
         value: newClient.object.presence.color.r,
