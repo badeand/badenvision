@@ -33,6 +33,15 @@ app.get('/images/texture_metal.jpg', function (req, res) {
   res.sendFile(__dirname + '/public/images/texture_metal.jpg');
 });
 
+app.get('/models/toomanyusers.obj', function (req, res) {
+  res.sendFile(__dirname + '/public/models/toomanyusers.obj');
+});
+
+app.get('/models/teapot.obj', function (req, res) {
+  res.sendFile(__dirname + '/public/models/teapot.obj');
+});
+
+
 function findClientsSocket(roomId, namespace) {
   var res = []
     // the default namespace is "/"

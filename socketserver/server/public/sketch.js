@@ -16,11 +16,16 @@ var movement;
 
 orientation = 0;
 
+var toomanysers = false;
+var toomanysersModel;
+
 function setClientObject(co) {
   this.clientObject = co;
 }
 
 function setup() {
+
+  toomanysersModel = loadModel('models/toomanyusers.obj');
 
   frameRate(35);
 
@@ -39,6 +44,12 @@ function setup() {
     console.log(co);
     setClientObject(co);
   });
+
+  socket.on('toomanyusers', function (co) {
+    console.log('toomanyusers');
+    toomanysers = true;
+  });
+
 
   createCanvas(windowWidth, windowHeight, WEBGL);
   strokeWeight(1)
@@ -96,7 +107,7 @@ function draw() {
   var dirY = -2 + lightRY;
 
   var clientObjectColor = this.clientObject ?
-    this.clientObject.presence.color : {r: 64, g: 64, b: 64};
+    this.clientObject.presence.color : {r: 256, g: 256, b: 256};
   directionalLight(
     clientObjectColor.r,
     clientObjectColor.g,
@@ -124,11 +135,19 @@ function draw() {
     }
   }
 
-
-  sphereSize = windowHeight < windowWidth ? windowHeight / 3 : windowWidth / 3;
   texture(metalTexture)
-  sphere(sphereSize, 50);
 
+  if( !toomanysers) {
+    sphereSize = windowHeight < windowWidth ? windowHeight / 3 : windowWidth / 3;
+    sphere(sphereSize, 20);
+  } else {
+    ambientLight(255,255,255);
+    ambientMaterial(255, 64, 64);
+    scale(5);
+    rotateX(3.14 + millis() / 100000);
+    rotateY(millis() / 1000);
+    model(toomanysersModel, false);
+  }
 }
 
 function moved() {

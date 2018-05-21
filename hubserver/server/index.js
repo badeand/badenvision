@@ -21,7 +21,6 @@ console.log( "Socket sever URL:"+socketServerClientURL)
 const clientsSocket = io.connect(socketServerClientURL+clientNsName);
 clientsSocket.emit('join', { ns: clientNsName});
 
-
 var udpPort = new osc.UDPPort({
   localAddress: "0.0.0.0",
   localPort: 9999,
@@ -101,50 +100,58 @@ serverio.on('connection', function (clientsocket) {
 
 clientsSocket.on('requestObject', function (data) {
   let newClient = clientRegister.newClient(data.deviceSocketId);
+  if (newClient) {
+    clientsSocket.emit("reemit", {
+      deviceSocketId: data.deviceSocketId,
+      message: "setObject",
+      contents: newClient.object,
+    } );
 
-  clientsSocket.emit("reemit", {
-    deviceSocketId: data.deviceSocketId,
-    message: "setObject",
-    contents: newClient.object,
-  } );
+    udpPort.send({
+      address: '/' + newClient.object.id + "/color",
+      args: [
+        {
+          type: "i",
+          value: newClient.object.presence.color.r,
+        },
+        {
+          type: "i",
+          value: newClient.object.presence.color.g,
+        },
+        {
+          type: "i",
+          value: newClient.object.presence.color.b,
+        },
+      ]
+    }, oscSendIP, oscSendPort);
 
-  udpPort.send({
-    address: '/' + newClient.object.id + "/color",
-    args: [
-      {
-        type: "i",
-        value: newClient.object.presence.color.r,
-      },
-      {
-        type: "i",
-        value: newClient.object.presence.color.g,
-      },
-      {
-        type: "i",
-        value: newClient.object.presence.color.b,
-      },
-    ]
-  }, oscSendIP, oscSendPort);
+    udpPort.send({
+      address: '/' + newClient.object.id + "/note",
+      args: [
+        {
+          type: "i",
+          value: newClient.object.presence.note,
+        }
+      ]
+    }, oscSendIP, oscSendPort);
 
-  udpPort.send({
-    address: '/' + newClient.object.id + "/note",
-    args: [
-      {
-        type: "i",
-        value: newClient.object.presence.note,
-      }
-    ]
-  }, oscSendIP, oscSendPort);
+    udpPort.send({
+      address: '/' + newClient.object.id + '/add',
+      args: [
+        {
+          type: "s",
+          value: 'add',
+        },
+      ]
+    }, "127.0.0.1", oscSendPort);
+  } else { // too many users
+    clientsSocket.emit("reemit", {
+      deviceSocketId: data.deviceSocketId,
+      message: "toomanyusers",
+      contents: {},
+    } );
+  }
 
-  udpPort.send({
-    address: '/' + newClient.object.id + '/add',
-    args: [
-      {
-        type: "s",
-        value: 'add',
-      },
-    ]
-  }, "127.0.0.1", oscSendPort);
 
 });
 
