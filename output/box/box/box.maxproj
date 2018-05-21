@@ -2,7 +2,7 @@
 	"name" : "box",
 	"version" : 1,
 	"creationdate" : 3607092304,
-	"modificationdate" : 3609245255,
+	"modificationdate" : 3609767940,
 	"viewrect" : [ 61.0, 412.0, 300.0, 500.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 0,
@@ -31,6 +31,11 @@
 				"local" : 1
 			}
 ,
+			"collisiondetector.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
 			"simsettings.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
@@ -46,7 +51,7 @@
 				"local" : 1
 			}
 ,
-			"collisiondetector.maxpat" : 			{
+			"ballsounds.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
