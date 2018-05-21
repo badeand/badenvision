@@ -127,16 +127,8 @@ clientsSocket.on('requestObject', function (data) {
   }, oscSendIP, oscSendPort);
 
   udpPort.send({
-    address: '/obj',
+    address: '/' + newClient.object.id + "/note",
     args: [
-      {
-        type: "s",
-        value: newClient.object.id,
-      },
-      {
-        type: "s",
-        value: 'note',
-      },
       {
         type: "i",
         value: newClient.object.presence.note,
