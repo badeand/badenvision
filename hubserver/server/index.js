@@ -13,8 +13,8 @@ app.get('/api/hello', (req, res) => {
   res.send({express: 'Hello From Express'});
 });
 
-socketServerClientIp = process.env.HUBSERVER_SOCKETSERVER_CLIENT_IP || "localhost";
-socketServerClientPort = process.env._HUBSERVER_SOCKETSERVER_CLIENT_PORT || "8080";
+socketServerClientIp = process.env.HUBSERVER_SOCKETSERVER_CLIENT_IP || "159.65.49.85";
+socketServerClientPort = process.env._HUBSERVER_SOCKETSERVER_CLIENT_PORT || "80";
 socketServerClientURL = 'http://'+socketServerClientIp+':'+socketServerClientPort;
 console.log( "Socket sever URL:"+socketServerClientURL)
 
@@ -143,7 +143,7 @@ clientsSocket.on('requestObject', function (data) {
           value: 'add',
         },
       ]
-    }, "127.0.0.1", oscSendPort);
+    }, oscSendIP, oscSendPort);
   } else { // too many users
     clientsSocket.emit("reemit", {
       deviceSocketId: data.deviceSocketId,
@@ -203,27 +203,25 @@ clientsSocket.on('rotation',
         args: [
           {
             type: "f",
-            value: 1- (((data.rotationY / 400) + 1)/2),
+            value: data.rotationX,
           },
         ]
       }, oscSendIP, oscSendPort);
-      /*
       udpPort.send({
         address: '/' + data.clientObjectId + "/y",
         args: [
           {
             type: "f",
-            value: (((data.rotationX / 10) + 1)/2),
+            value: data.rotationY,
           },
         ]
       }, oscSendIP, oscSendPort);
-*/
       udpPort.send({
-        address: '/' + data.clientObjectId + "/y",
+        address: '/' + data.clientObjectId + "/z",
         args: [
           {
             type: "f",
-            value: Math.max((data.pAccelerationZ/300)*-10,0.5),
+            value: data.pAccelerationZ,
           },
         ]
       }, oscSendIP, oscSendPort);
