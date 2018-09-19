@@ -90,8 +90,10 @@ clientsNs.on('connection', function (socket) {
     deviceSocketId: socket.id,
   };
 
-  socket.on('rotation', function (data) {
-    clientsNs.emit('rotation', data);
+  socket.on('moved', function (data) {
+   // console.log(`moved y=${data.mouseY} + client=${data.clientObjectId}`);
+//    console.log(`${(new Date()).getTime()}`);
+    clientsNs.emit('moved', data);
   });
 
   socket.on('reemit', function (data) {

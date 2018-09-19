@@ -148,19 +148,23 @@ function draw() {
     rotateY(millis() / 1000);
     model(toomanysersModel, false);
   }
+
+
 }
 
 function moved() {
   // line(mouseX, mouseY, pmouseX, pmouseY);
   var data = {
-      mouseX: mouseX,
-      mouseY: mouseY,
+      clientObjectId: this.clientObject.id,
+      mouseX: mouseX / windowWidth,
+      mouseY: mouseY / windowHeight,
     }
   ;
   socket.emit('moved', data);
-  // console.log('moved');
+  console.log(`.`);
 }
 
+/*
 
 function deviceMoved() {
   if (this.clientObject) {
@@ -174,26 +178,46 @@ function deviceMoved() {
     socket.emit('rotation', data);
   }
 }
+*/
 
+
+function touchStarted() {
+  moved();
+  return false;
+}
 
 function touchMoved() {
   moved();
   return false;
 }
 
+function touchEnded() {
+  moved();
+  return false;
+}
 
 function mouseMoved() {
   moved();
   return false;
 }
 
-function mousePressed() {
-  // console.log('pressed');
-
-  var data = {
-      mouseX: mouseX,
-      mouseY: mouseY,
-    }
-  ;
-  socket.emit('pressed', data);
+function mouseDragged() {
+  moved();
+  return false;
 }
+
+function mousePressed() {
+  moved();
+  return false;
+}
+
+function mouseReleased() {
+  moved();
+  return false;
+}
+function mouseClicked() {
+  moved();
+  return false;
+}
+
+

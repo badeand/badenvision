@@ -13,8 +13,8 @@ app.get('/api/hello', (req, res) => {
   res.send({express: 'Hello From Express'});
 });
 
-socketServerClientIp = process.env.HUBSERVER_SOCKETSERVER_CLIENT_IP || "159.65.49.85";
-socketServerClientPort = process.env._HUBSERVER_SOCKETSERVER_CLIENT_PORT || "80";
+socketServerClientIp = process.env.HUBSERVER_SOCKETSERVER_CLIENT_IP || "127.0.0.1";
+socketServerClientPort = process.env._HUBSERVER_SOCKETSERVER_CLIENT_PORT || "8080";
 socketServerClientURL = 'http://'+socketServerClientIp+':'+socketServerClientPort;
 console.log( "Socket sever URL:"+socketServerClientURL)
 
@@ -175,35 +175,16 @@ clientsSocket.on('removeClient', function (data) {
 
 });
 
-function redirectXYEventToOSC(eventType) {
-  clientsSocket.on(eventType,
-    function (data) {
-      udpPort.send({
-        address: '/' + eventType,
-        args: [
-          {
-            type: "i",
-            value: data.mouseX
-          },
-          {
-            type: "i",
-            value: data.mouseY
-          }
-        ]
-      }, oscSendIP, oscSendPort);
 
-    }
-  );
-}
 
-clientsSocket.on('rotation',
+clientsSocket.on('moved',
     function (data) {
       udpPort.send({
         address: '/' + data.clientObjectId + "/x",
         args: [
           {
             type: "f",
-            value: data.rotationX,
+            value: data.mouseX,
           },
         ]
       }, oscSendIP, oscSendPort);
@@ -212,16 +193,7 @@ clientsSocket.on('rotation',
         args: [
           {
             type: "f",
-            value: data.rotationY,
-          },
-        ]
-      }, oscSendIP, oscSendPort);
-      udpPort.send({
-        address: '/' + data.clientObjectId + "/z",
-        args: [
-          {
-            type: "f",
-            value: data.pAccelerationZ,
+            value: data.mouseY,
           },
         ]
       }, oscSendIP, oscSendPort);
